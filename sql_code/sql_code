@@ -14,3 +14,7 @@ CREATE TABLE transacoes (
     data_hora DATETIME NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+insert into usuarios(nome, cpf, senha, saldo)
+VALUES ('Arnaldo Samuel',70945678904,'arnaldose',0), 
+('Kaio Barbosa','17654322105','kaiose', 0); 
