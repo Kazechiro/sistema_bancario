@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //insert nas transações - para ficarem salvas todas as transações
     $sql_code = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
-                 VALUES ('D', $usuario_id, $valor_deposito, NOW())";
+                 VALUES ('Depósito', $usuario_id, $valor_deposito, NOW())";
     $resultado = $conexao->query($sql_code);
 
    
