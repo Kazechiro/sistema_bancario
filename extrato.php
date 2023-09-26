@@ -33,6 +33,9 @@ $usuario_id = $_SESSION['id'];
         }
     
     ?>
+    =========================================================<br>
+      Seu saldo: <?php echo $_SESSION['saldo'] ?><br>
+    
     <a href="principal.php">Voltar</a>
   </center>
 </body>
