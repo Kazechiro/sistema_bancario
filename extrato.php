@@ -26,15 +26,22 @@ $usuario_id = $_SESSION['id'];
         while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
           echo "<div class='transacoes'>";
           echo "<li class='lista'>";
-          echo "<span>" .$row_transacoes['tipo_transacao'] . ": </span>";
-          echo "<span>" .$row_transacoes['valor'] . "</span>";
-          echo "<span> || Data:  " .$row_transacoes['data_hora'] . "</span>";
+          
+          
+          if ($row_transacoes['tipo_transacao'] == 'Depósito') {
+              $tipo = 'Depósito:'.' +';
+          } else {
+              $tipo = 'Saque: '.' -';
+          }
+          
+          echo "<span>" . $tipo . $row_transacoes['valor'] . ": </span>";
+          echo "<span>Data: " . $row_transacoes['data_hora'] . "</span>";
           echo "</li><br>";
           echo "</div>";
-        }
+      }
     
     ?>
-    =========================================================<br>
+    =======================================================<br>
       Seu saldo: <?php echo $_SESSION['saldo'] ?><br>
     
     <a href="principal.php">Voltar</a>

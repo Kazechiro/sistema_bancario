@@ -29,14 +29,25 @@
             <div class="input-container">
                 <input type="number" name="cpf_cadastro" class="input" required>
                 <label class="labelCadastro">
-                    Digite seu cpf
+                    Cpf
                 </label>
             </div>
-          
+            <div class="input-container">
+                <input type="text" name="cep" class="input" required>
+                <label class="labelCadastro">
+                    Cep
+                </label>
+            </div>
+            <div class="input-container">
+                <input type="date" name="data_nascimento" class="input" required>
+                <label class="labelCadastro">
+                    Data de Nascimento
+                </label>
+            </div>
             <div class="input-container">
                 <input type="text" name="senha" class="input" required>
                 <label class="labelCadastro">
-                    Digite sua senha
+                    Senha
                 </label>
             </div>
             <div>
