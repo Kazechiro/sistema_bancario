@@ -4,6 +4,7 @@ if (!isset($_SESSION)) {
 }
 
 include('conexao.php');
+include('protect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $valor_deposito = floatval($_POST['valor_deposito']);
