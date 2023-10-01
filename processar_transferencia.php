@@ -23,8 +23,6 @@ try {
         header('Location:transferir.php');
     } else {
 
-    
-
     // Atualizar o saldo do usuário que tá fazendo a tranferência
     $sql_atualizar_remetente = "UPDATE usuarios SET saldo = saldo - :valor WHERE id = :remetente_id";
     $stmt_atualizar_remetente = $conn->prepare($sql_atualizar_remetente);
