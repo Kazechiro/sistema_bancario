@@ -30,8 +30,10 @@ $usuario_id = $_SESSION['id'];
           
           if ($row_transacoes['tipo_transacao'] == 'Depósito') {
               $tipo = 'Depósito:'.' +';
-          } else {
+          } else if($row_transacoes['tipo_transacao'] == 'Saque'){
               $tipo = 'Saque: '.' -';
+          } else {
+            $tipo = 'Transferência'.' -';
           }
           
           echo "<span>" . $tipo . $row_transacoes['valor'] . ": </span>";
