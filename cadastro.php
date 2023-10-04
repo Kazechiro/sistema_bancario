@@ -1,66 +1,79 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<form action="cadastrar.php" id="form_cadastro" method="POST">
-            
-<?php
-            if (isset($_SESSION['msg_cadastro'])) {
-                echo $_SESSION['msg_cadastro'];
-                unset($_SESSION['msg_cadastro']);
-            }
-            ?>
-            <h1>
-                Cadastre sua conta
-            </h1>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="loader"></div>
+                <h1 id="titulo">Sistema Báncario PB</h1>
+            </div>
+        </nav>
+    </header>
 
-            <div class="input-container">
-                <input type="text" name="nome" class="input" required>
-                <label class="labelCadastro">
-                    Digite seu nome
-                </label>
-            </div>
+    <div class="tela_cadastro">
+        <h1>Cadastre sua conta</h1><br>
+        <div class="form_cadastro">
+            <form action="cadastrar.php" method="POST">
 
-            <div class="input-container">
-                <input type="number" name="cpf_cadastro" class="input" required>
-                <label class="labelCadastro">
-                    Cpf
-                </label>
-            </div>
-            <div class="input-container">
-                <input type="text" name="cep" class="input" required>
-                <label class="labelCadastro">
-                    Cep
-                </label>
-            </div>
-            <div class="input-container">
-                <input type="date" name="data_nascimento" class="input" required>
-                <label class="labelCadastro">
-                    Data de Nascimento
-                </label>
-            </div>
-            <div class="input-container">
-                <input type="text" name="senha" class="input" required>
-                <label class="labelCadastro">
-                    Senha
-                </label>
-            </div>
-            <div>
-                <button type="submit" class="submit-button" value="Cadastrar">
-                    Cadastrar
-                </button>
-            </div>
-            <div class="cadastro">
-                Já tem uma conta?
-                <a href=index.php>
-                    Logar
-                </a>
-            </div>
-        </form>
+                <?php
+                if (isset($_SESSION['msg_cadastro'])) {
+                    echo $_SESSION['msg_cadastro'];
+                    unset($_SESSION['msg_cadastro']);
+                }
+                ?>
+
+                <div class="input_container_cadastro">
+                    <input type="text" name="nome" class="inputCadastro" placeholder="" required>
+                    <label class="labelCadastro">
+                        Digite seu nome
+                    </label>
+                </div>
+
+                <div class="input_container_cadastro">
+                    <input type="number" name="cpf_cadastro" class="inputCadastro" placeholder="" required>
+                    <label class="labelCadastro">
+                        Cpf
+                    </label>
+                </div>
+                <div class="input_container_cadastro">
+                    <input type="text" name="cep" class="inputCadastro" placeholder="" required>
+                    <label class="labelCadastro">
+                        Cep
+                    </label>
+                </div>
+                <div class="input_container_cadastro">
+                    <input type="date" name="data_nascimento" class="inputCadastro" placeholder="" required>
+                    <label class="labelCadastro">
+                        Data de Nascimento
+                    </label>
+                </div>
+
+                <div class="input_container_cadastro">
+                    <input type="text" name="senha" class="inputCadastro" placeholder="" required>
+                    <label class="labelCadastro">
+                        Senha
+                    </label>
+                </div>
+                <div class="botao_cadastro">
+                    <button type="submit" value="Cadastrar">Cadastrar</button>
+                </div>
+                <div class="cadastro">
+                    Já tem uma conta?
+                    <a href=index.php>
+                        Logar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>

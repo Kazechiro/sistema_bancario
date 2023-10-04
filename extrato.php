@@ -1,4 +1,5 @@
 <?php
+
 include('conexao.php');
 include('protect.php');
 
@@ -8,45 +9,73 @@ $usuario_id = $_SESSION['id'];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Extrato</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <center>
-    Extrato de <?php echo $_SESSION['nome'] ?><br>
-    =========================================================
-    <?php
-    $sql_transacoes = "SELECT * FROM transacoes WHERE usuario_id = :usuario_id";
-    $stmt_transacoes = $conn->prepare($sql_transacoes);
+<header>
+    <nav>
+      <div class="logo">
+        <div class="loader"></div>
+        <h1 id="titulo">Sistema Báncario PB</h1>
+      </div>
+      <div class="bem_vindo_nome">
+        <h2>Conta: <?php echo $_SESSION['nome']; ?></h2>
+      </div>
+      <div class="botao_nav">
+        <ul>
+          <a href="principal.php"> <button class="butao">Início</button></a>
+          <a href="transferir.php"> <button class="butao">Transferir</button></a>
+          <a href="extrato.php"> <button id="butao_selecionado">Extrato</button></a>
+          <a href="perfil.php"> <button class="butao">Perfil</button></a>
+          <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="caixa_dados_extrato">
+    <h2>Extrato de <?php echo $_SESSION['nome'] ?></h2><br>
+    <div class="informacoes_extrato">
+      
+        <?php
+        $sql_transacoes = "SELECT * FROM transacoes WHERE usuario_id = :usuario_id";
+        $stmt_transacoes = $conn->prepare($sql_transacoes);
         $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
         $stmt_transacoes->execute();
 
         while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
           echo "<div class='transacoes'>";
           echo "<li class='lista'>";
-          
-          
+
+
           if ($row_transacoes['tipo_transacao'] == 'Depósito') {
-              $tipo = 'Depósito:'.' +';
-          } else if($row_transacoes['tipo_transacao'] == 'Saque'){
-              $tipo = 'Saque: '.' -';
-          } else {
-            $tipo = 'Transferência'.' -';
-          }
-          
-          echo "<span>" . $tipo . $row_transacoes['valor'] . ": </span>";
+            $tipo = 'Depósito:'.' +';
+        } else if($row_transacoes['tipo_transacao'] == 'Saque'){
+            $tipo = 'Saque: '.' -';
+        } else {
+          $tipo = 'Transferência'.' -';
+        }
+
+          echo "<span>" . $tipo . $row_transacoes['valor'] . "</span>";
+          echo "<br>";
           echo "<span>Data: " . $row_transacoes['data_hora'] . "</span>";
-          echo "</li><br>";
+          echo "</li>";
           echo "</div>";
-      }
-    
-    ?>
-    =======================================================<br>
-      Seu saldo: <?php echo $_SESSION['saldo'] ?><br>
-    
-    <a href="principal.php">Voltar</a>
-  </center>
+        }
+
+        ?>
+        <h3>Seu saldo: <?php echo $_SESSION['saldo'] ?></h3>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
+
 </html>

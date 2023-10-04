@@ -26,19 +26,23 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
             $_SESSION['cpf'] = $usuario['cpf'];
+            $_SESSION['cep'] = $usuario['cep'];
+            $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
             $_SESSION['senha'] = $usuario['senha'];
             $_SESSION['saldo'] = $usuario['saldo'];
 
-            header("Location: principal.php");
+            header("Location: loading.php");
             exit();
         } else {
-            $_SESSION['msg_login'] = "<p class='error'>Falha ao logar! cpf ou senha incorretos</p>";
+            $_SESSION['msg_login'] = "<p class='error'>Falha ao logar! CPF ou senha incorretos</p>";
             header("Location: index.php");
             exit();
         }
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,51 +51,61 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="body-login">
-    <div id="login">
-        <form action="" method="POST" id="form_login">
-            <?php
-            if (isset($_SESSION['msg_login'])) {
-                echo $_SESSION['msg_login'];
-                unset($_SESSION['msg_login']);
-            }
-            ?>
+<body>
 
-            <h1>
-                Acesse sua conta
-            </h1>
-            <div class="input-container">
-            <input type="text" name="cpf" id="cpf" class="inputLogin" required>
-                <label class="labelLogin">
-                    cpf
-                </label>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="loader"></div>
+                <h1 id="titulo">Sistema Báncario PB</h1>
             </div>
+        </nav>
+    </header>
 
-            <div class="input-container">
-                <input type="password" name="senha" class="inputLogin" required>
-                <label class="labelLogin">
-                    Senha
-                </label>
-            </div>
+    <div class="tela_login">
+        <h1>Acesse sua conta</h1><br>
+        <div class="form_login">
+            <form action="" method="POST">
+                <?php
+                if (isset($_SESSION['msg_login'])) {
+                    echo $_SESSION['msg_login'];
+                    unset($_SESSION['msg_login']);
+                }
+                ?>
 
-            <div>
-                <button type="submit" class="submit-button">
-                    Entrar
-                </button>
-            </div>
+                <div class="input_container_login">
+                    <input type="text" name="cpf" id="cpf" class="inputLogin" placeholder="" required>
+                    <label class="labelLogin">
+                        CPF
+                    </label>
+                </div>
 
-            <div class="cadastro">
-                Não possui uma conta? <a href="cadastro.php">Inscreva-se</a>
-            </div>
-        </form>
+                <div class="input_container_login">
+                    <input type="password" name="senha" class="inputLogin" id="senha" placeholder="" required>
+                    <label class="labelLogin">
+                        Senha
+                    </label>
+                    <span>Mostrar Senha:<input type="checkbox" onclick="mostrarOcultarSenha()"></span>
+                    <a id="esqueci_senha" href="esqueci_senha.php">Esqueceu a senha?</a>
+                </div>
+
+                <div class="botao_login">
+                    <button type="submit">Entrar</button>
+                </div>
+
+                <div class="login_cadastro">
+                    Não possui uma conta? <a href="cadastro.php">Cadastre-se</a>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <script src="js/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-   
+    <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
 
 </html>

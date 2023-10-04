@@ -4,7 +4,6 @@ if (!isset($_SESSION)) {
 }
 
 include('conexao.php');
-include('protect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $valor_deposito = floatval($_POST['valor_deposito']);
@@ -17,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $usuario_id = $_SESSION['id'];
 
-   //update no banco
+    //update no banco
     $sql_code = "UPDATE usuarios SET saldo = saldo + $valor_deposito WHERE id = $usuario_id";
     $resultado = $conexao->query($sql_code);
 
-// atualizando o valor no principal.php
+    // atualizando o valor no principal.php
     if (!$resultado) {
         echo "erro ao atualizar o valor";
     } else {
-        
+
         $_SESSION['saldo'] += $valor_deposito;
     }
 
@@ -34,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                  VALUES ('Depósito', $usuario_id, $valor_deposito, NOW())";
     $resultado = $conexao->query($sql_code);
 
-   
+
 
     $_SESSION['msg_deposito'] = "<p class='success'>Depósito de R$ $valor_deposito realizado com sucesso.</p>";
     header("Location: principal.php");
@@ -45,37 +44,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depositar</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<form action="" method="POST" id="form_login">
-           
-            <h1>
-                Faça o deposito
-            </h1>
-            <div class="input-container">
-            <label class="labelLogin">
-                Valor:
-                </label>
-                <input type="number" name="valor_deposito" class="input" required>
-            </div>
 
-            <div>
-                <button type="submit" class="submit-button">
-                    Depositar
-                </button>
-            </div>
+<header>
+    <nav>
+      <div class="logo">
+        <div class="loader"></div>
+        <h1 id="titulo">Sistema Báncario</h1>
+      </div>
 
-
-            <div>
-                <button type="submit" class="submit-button" >
-                    <a href="principal.php">Voltar</a>
-                </button>
-            </div>
-            
-        </form>
+      <div class="botao_nav">
+        <ul>
+        <a href="principal.php"> <button class="butao">Início</button></a>
+          <a href="deposito.php"> <button class="butao">Depositar</button></a>
+          <a href="sacar.php"> <button class="butao">Sacar</button></a>
+          <a href="extrato.php"> <button class="butao">Extrato</button></a>
+          <a href="perfil.php"> <button class="butao">Perfil</button></a>
+          <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+    <div class="tela_depositar">
+        <h1>Faça o Deposito</h1><br>
+        <div class="form_depositar">
+            <form action="deposito.php" method="POST">
+                <div class="input_container_depositar">
+                    <input type="number" name="valor_deposito" id="valor" class="inputDepositar" placeholder="" required>
+                    <label class="labelDepositar"  for="valor">
+                        Valor:
+                    </label> 
+                </div>
+                <div class="button_depositar">
+                    <button type="submit">Depositar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
+
 </html>
