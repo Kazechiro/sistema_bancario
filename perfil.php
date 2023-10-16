@@ -35,7 +35,7 @@ $saldo = $_SESSION['saldo'];
         <nav>
             <div class="logo">
                 <div class="loader"></div>
-                <h1 id="titulo">Sistema Báncario PB</h1>
+                <h1 id="titulo">Sistema Bancário PB</h1>
             </div>
             <div class="bem_vindo_nome">
                 <h2>Conta: <?php echo $_SESSION['nome']; ?></h2>
@@ -60,7 +60,7 @@ $saldo = $_SESSION['saldo'];
             <p><strong>CPF:</strong> <?php echo $cpf; ?></p>
             <p><strong>CEP:</strong> <?php echo $cep; ?></p>
             <p><strong>Data de Nascimento:</strong> <?php echo $data_nascimento; ?></p>
-            <p><strong>Senha:</strong> <?php echo $senha; ?></p>
+            <p><strong>Id:</strong> <?php echo $id; ?></p>
             <p><strong>Seu saldo na conta é de:</strong> R$<?php echo $saldo; ?></p>
         </div>
     </div>

@@ -15,7 +15,7 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
         header("Location: index.php");
         exit();
     } else {
-        $sql_code = "SELECT * FROM usuarios WHERE cpf = '$cpf' AND senha = '$senha'";
+        $sql_code = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
         $sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error);
 
         $quantidade = $sql_query->num_rows;
@@ -23,16 +23,23 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
         if ($quantidade == 1) {
             $usuario = $sql_query->fetch_assoc();
 
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['cpf'] = $usuario['cpf'];
-            $_SESSION['cep'] = $usuario['cep'];
-            $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
-            $_SESSION['senha'] = $usuario['senha'];
-            $_SESSION['saldo'] = $usuario['saldo'];
+            // Verifique se a senha inserida corresponde à senha armazenada no banco
+            if (password_verify($senha, $usuario['senha'])) {
+                $_SESSION['id'] = $usuario['id'];
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['cpf'] = $usuario['cpf'];
+                $_SESSION['cep'] = $usuario['cep'];
+                $_SESSION['data_nascimento'] = $usuario['data_nascimento'];
+                $_SESSION['senha'] = $usuario['senha'];
+                $_SESSION['saldo'] = $usuario['saldo'];
 
-            header("Location: loading.php");
-            exit();
+                header("Location: loading.php");
+                exit();
+            } else {
+                $_SESSION['msg_login'] = "<p class='error'>Falha ao logar! CPF ou senha incorretos</p>";
+                header("Location: index.php");
+                exit();
+            }
         } else {
             $_SESSION['msg_login'] = "<p class='error'>Falha ao logar! CPF ou senha incorretos</p>";
             header("Location: index.php");
@@ -60,7 +67,7 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
         <nav>
             <div class="logo">
                 <div class="loader"></div>
-                <h1 id="titulo">Sistema Báncario PB</h1>
+                <h1 id="titulo">Sistema Bancário PB</h1>
             </div>
         </nav>
     </header>

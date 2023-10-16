@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav>
       <div class="logo">
         <div class="loader"></div>
-        <h1 id="titulo">Sistema Báncario</h1>
+        <h1 id="titulo">Sistema Bancário</h1>
       </div>
 
       <div class="botao_nav">

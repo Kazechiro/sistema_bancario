@@ -18,8 +18,9 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
         $quantidade = $sql_query->num_rows;
 
         if ($quantidade == 1) {
-            // Atualize a senha na tabela de usuários
-            $update_sql = "UPDATE usuarios SET senha = '$nova_senha' WHERE cpf = '$cpf'";
+            // Atualize a senha na tabela de usuários (usando password_hash)
+            $senha_hashed = password_hash($nova_senha, PASSWORD_ARGON2ID);
+            $update_sql = "UPDATE usuarios SET senha = '$senha_hashed' WHERE cpf = '$cpf'";
             $conexao->query($update_sql) or die("Falha na execução do código SQL: " . $conexao->error);
 
             $_SESSION['msg_esqueci_senha'] = "<p class='success'>Senha atualizada com sucesso</p>";
@@ -48,7 +49,7 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
         <nav>
             <div class="logo">
                 <div class="loader"></div>
-                <h1 id="titulo">Sistema Báncario PB</h1>
+                <h1 id="titulo">Sistema Bancário PB</h1>
             </div>
         </nav>
     </header>
