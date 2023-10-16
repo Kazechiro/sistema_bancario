@@ -1,10 +1,13 @@
-create schema sb;
+drop database sb;
+create database sb;
 use sb;
 
 CREATE TABLE usuarios (
    id INT AUTO_INCREMENT PRIMARY KEY,
    nome VARCHAR(255) NOT NULL,
    cpf VARCHAR(11) UNIQUE NOT NULL,
+   cep VARCHAR(10),
+   data_nascimento DATE,
    senha VARCHAR(255) NOT NULL,
    saldo DECIMAL(10, 2) NULL
 );
@@ -18,6 +21,12 @@ CREATE TABLE transacoes (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
-insert into usuarios(nome, cpf, senha, saldo)
-VALUES ('Arnaldo Samuel',70945678904,'arnaldose',0), 
-('Kaio Barbosa','17654322105','kaiose', 0); 
+INSERT INTO usuarios (nome, cpf, cep, data_nascimento, senha, saldo)
+VALUES 
+  ('Arnaldo Samuel', 70945678904, '58065-036', '2004-02-10', 'arnaldose', 0), 
+  ('Kaio Barbosa', 17654322105, '58065-036', '2004-02-10', 'kaiose', 0),
+  ('Vittorio', 12345678978, '58065-036', '2004-02-10', 'vitts', 0);
+
+       
+       
+select * from usuarios;

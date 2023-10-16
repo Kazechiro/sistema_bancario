@@ -1,0 +1,880 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('image/teste3.jpg');
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: transparent;
+  padding: 20px 0;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+nav li {
+  font-size: 18px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.sobre-content h2,
+.cardapio-content h2,
+.contato-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #0056b3;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 300px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  nav li {
+      font-size: 16px;
+  }
+
+  .banner-content h1 {
+      font-size: 24px;
+  }
+
+  .banner-content p {
+      font-size: 16px;
+  }
+
+  .cta-button {
+      font-size: 14px;
+  }
+
+  section {
+      padding: 20px 0;
+  }
+}
+
+
+.logo {
+  display: flex;
+}
+
+#titulo{
+  color: #011640;
+  margin: auto;
+  margin-left: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.butao {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#butao_selecionado {
+  background-color: #011640;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+#butao_selecionado:hover {
+  background-color: #012340;
+}
+
+.botao_nav button{
+  background-color: #025373;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao_nav button:hover {
+  background-color: #011640;
+}
+
+.sobre-content {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.loader:after {
+  content: '$';
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  background: #FFD700;
+  color: #DAA520;
+  border: 4px double;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  
+}
+
+@keyframes coin-flip {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+
+  0% {
+    transform: rotateY(900deg);
+  }
+
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+
+  100% {
+    transform: rotateY(1800deg);
+  }
+}
+
+.bem_vindo_nome{
+  color: #011640;
+}
+
+.img-wrapper{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 2, 2, 0.952);
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  animation: zoom 25s;
+}
+
+.error{
+  color: red;
+}
+
+
+/* index.php */
+
+.tela_login {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  text-align: center;
+  width: 400px;
+  margin: auto;
+}
+
+.form_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_login {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.inputLogin {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.labelLogin {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputLogin:focus + .labelLogin,
+.inputLogin:not(:placeholder-shown) + .labelLogin {
+  top: -14px;
+  font-size: 12px;
+  color: #011640;
+}
+
+.botao_login button{
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.botao_login button:hover {
+  background-color: #011640;
+}
+
+.login_cadastro {
+  margin-top: 10px;
+}
+
+.login_cadastro a {
+  text-decoration: none;
+  color: #011640;
+  font-weight: bold;
+}
+
+.login_cadastro a:hover {
+  text-decoration: underline;
+}
+
+.input_container_login {
+  margin-top: 10px;
+}
+
+.input_container_login a {
+  text-decoration: none;
+  color: #011640;
+  font-weight: bold;
+}
+
+.input_container_login a:hover {
+  text-decoration: underline;
+}
+
+.input_container_login span{
+  display: flex;
+  font-size: medium;
+  padding: 5px;
+  color: black;
+  font-size: 13px;
+}
+
+
+
+/* esqueci_senha.php */
+
+.tela_esqueci_senha {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  text-align: center;
+  width: 400px;
+  border: 2px solid #000;
+  margin: auto;
+}
+
+.tela_esqueci_senha h1{
+  color: #011640;
+}
+
+.form_senha {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_esqueci_senha {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.inputSenha {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.labelSenha {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputSenha:focus + .labelSenha,
+.inputSenha:not(:placeholder-shown) + .labelSenha {
+  top: -17px;
+  font-size: 12px;
+  color: #011640;
+}
+
+.botao_senha button{
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+}
+
+.botao_senha button:hover {
+  background-color: #011640;
+}
+
+.botao_senha a{
+  background-color: #025373;
+  color: #ffff;
+  text-decoration: none;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+}
+
+.botao_senha a:hover {
+  background-color: #011640;
+}
+
+.input_container_esqueci_senha span{
+  display: flex;
+  font-size: medium;
+  padding: 5px;
+  color: black;
+  font-size: 12px;
+}
+
+
+
+/* cadastro.php */
+
+.tela_cadastro {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  text-align: center;
+  width: 400px;
+  border: 2px solid #000;
+  margin: auto;
+}
+
+.tela_cadastro h1{
+  color: #011640;
+}
+
+.form_cadastro{
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_cadastro {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.inputCadastro {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #011640;
+  border-radius: 5px;
+  background-color: #99ADBF;
+}
+
+.labelCadastro {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputCadastro:focus + .labelCadastro,
+.inputCadastro:not(:placeholder-shown) + .labelCadastro {
+  top: -17px;
+  font-size: 12px;
+  color: #011640;
+}
+
+.botao_cadastro button{
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.botao_cadastro button:hover {
+  background-color: #011640;
+}
+
+.cadastro {
+  margin-top: 10px;
+}
+
+.cadastro a {
+  text-decoration: none;
+  color: #011640;
+  font-weight: bold;
+}
+
+.cadastro a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* principal.php */
+
+.detalhes_conta {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  text-align: center;
+  width: 800px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.informacoes_conta{
+ justify-content: center;
+ padding: 10px;
+ align-items: center;
+}
+
+.informacoes_usuario h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.informacoes_usuario p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
+
+.botao_conta button{
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao_conta button:hover {
+  background-color: #011640;
+}
+
+.form_depositar button,
+.form_sacar button {
+  background-color: #025373; 
+  color: #F2F2F2; 
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.detalhes_conta {
+  text-align: center;
+  overflow: hidden; 
+}
+
+.form_depositar {
+  float: left; 
+  width: 48%; 
+  margin-right: 2%; 
+}
+
+.form_sacar {
+  float: right; 
+  width: 48%; 
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* trasferir.php */
+
+.tela_trasferir {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  text-align: center;
+  width: 500px;
+  border: 2px solid #000;
+  margin: auto;
+}
+
+.form_trasferir {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_transferir {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: large;
+}
+
+.inputTransferir {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.labelTransferir {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.botao_trasferir button{
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+}
+
+.botao_trasferir button:hover {
+  background-color: #011640;
+}
+
+.botao_trasferir a{
+  background-color: #025373;
+  color: #ffff;
+  text-decoration: none;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+}
+
+.botao_trasferir a:hover {
+  background-color: #011640;
+}
+
+
+
+/* extrato.php */
+
+.caixa_dados_extrato {
+  background-color: #ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #000;
+  padding: 30px;
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.informacoes_extrato{
+ justify-content: center;
+ padding: 10px;
+}
+
+.informacoes_extrato h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.informacoes_extrato p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
+
+.botao_perfil button{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao_perfil button:hover {
+  background-color: #0056b3;
+}
+
+.transacoes {
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lista {
+  list-style-type: none;
+}
+
+.lista span {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+
+
+/* perfil.php */
+
+.caixa_dados_perfil {
+  background-color: #ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #000;
+  padding: 30px;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.informacoes_usuario{
+ justify-content: center;
+ padding: 10px;
+}
+
+.informacoes_usuario h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.informacoes_usuario p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
+
+
+
+/* deposito.php */
+
+.tela_depositar {
+  background-color: #ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #000;
+  padding: 30px;
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.form_depositar {
+  justify-content: center;
+  padding: 10px;
+}
+
+.input_container_depositar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputDepositar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640
+}
+
+.labelDepositar {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputDepositar:focus + .labelDepositar,
+.inputDepositar:not(:placeholder-shown) + .labelDepositar {
+  top: -12px;
+  font-size: 12px;
+  color: #011640;
+}
+
+.button_depositar button{
+  background-color: #025373;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button_depositar button:hover {
+  background-color: #011640;
+}
+
+.button_depositar a {
+  text-decoration: none;
+  color: #fff; 
+}
+
+
+
+/* saque.php */
+
+.tela_sacar {
+  background-color: #ffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #000;
+  padding: 30px;
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.form_sacar {
+  justify-content: center;
+  padding: 10px;
+}
+
+.input_container_sacar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputSacar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640
+}
+
+.labelSacar {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputSacar:focus + .labelSacar,
+.inputSacar:not(:placeholder-shown) + .labelSacar {
+  top: -12px;
+  font-size: 12px;
+  color: #011640;
+}
+
+
+.button_sacar button{
+  background-color: #025373;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button_sacar button:hover {
+  background-color: #011640;
+}
+
+.button_sacar a {
+  text-decoration: none;
+  color: #fff; 
+}
+
