@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema Báncario - Principal</title>
+  <title>Sistema Bancário - Principal</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav>
       <div class="logo">
         <div class="loader"></div>
-        <h1 id="titulo">Sistema Báncario PB</h1>
+        <h1 id="titulo">Sistema Bancário PB</h1>
       </div>
       <div class="bem_vindo_nome">
         <h2> Bem vindo (a) <?php echo $_SESSION['nome']; ?></h2>

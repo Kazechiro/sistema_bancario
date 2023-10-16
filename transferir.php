@@ -20,7 +20,7 @@ if (!isset($_SESSION)) {
         <nav>
             <div class="logo">
                 <div class="loader"></div>
-                <h1 id="titulo">Sistema Báncario PB</h1>
+                <h1 id="titulo">Sistema Bancário PB</h1>
             </div>
             <div class="bem_vindo_nome">
                 <h2> Conta: <?php echo $_SESSION['nome']; ?></h2>
