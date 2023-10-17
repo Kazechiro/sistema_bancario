@@ -3,13 +3,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// Inclua o arquivo de conexão ao banco de dados
 include "conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $novoLimite = isset($_POST['novo_limite']) ? floatval($_POST['novo_limite']) : 0;
 
-    // Atualiza o limite do usuário logado no banco de dados
     $usuario_id = $_SESSION['id']; // Suponha que o ID do usuário logado está na variável de sessão
 
     $sqlAtualizarLimite = "UPDATE usuarios SET limite = $novoLimite WHERE id = $usuario_id";
@@ -31,7 +29,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// Inclua o arquivo de conexão ao banco de dados
 include "conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
