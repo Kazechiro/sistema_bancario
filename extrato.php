@@ -21,8 +21,8 @@ $usuario_id = $_SESSION['id'];
 <header>
     <nav>
       <div class="logo">
-        <div class="loader"></div>
-        <h1 id="titulo">Sistema Bancário PB</h1>
+        <div class="coin"></div>
+        <h1 id="titulo">FinTechGuard</h1>
       </div>
       <div class="bem_vindo_nome">
         <h2>Conta: <?php echo $_SESSION['nome']; ?></h2>
@@ -70,7 +70,7 @@ $usuario_id = $_SESSION['id'];
         }
 
         ?>
-        <h3>Seu saldo: <?php echo $_SESSION['saldo'] ?></h3>
+        <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3>
 
     </div>
   </div>

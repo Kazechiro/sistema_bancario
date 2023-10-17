@@ -85,6 +85,3 @@ Agradecemos antecipadamente por sua colaboração!
 - [@Vittorio Augusto](https://github.com/vittorioaugusto)
   
 [Doc Simulador Sistema Bancário - Gestão e qualidade de software.docx](https://github.com/Kazechiro/sistema_bancario/files/12930476/Doc.Simulador.Sistema.Bancario.-.Gestao.e.qualidade.de.software.docx)
-
-
-

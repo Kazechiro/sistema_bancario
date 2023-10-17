@@ -2,9 +2,9 @@
 
 
 $usuario = 'root';
-$senha = '0123';
+$senha = '';
 $database = 'sb';
-$host = 'localhost';
+$host = 'localhost:3307';
 
 $conexao = new mysqli($host, $usuario, $senha, $database);
 

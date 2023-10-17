@@ -48,8 +48,8 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
     <header>
         <nav>
             <div class="logo">
-                <div class="loader"></div>
-                <h1 id="titulo">Sistema Bancário PB</h1>
+                <div class="coin"></div>
+                <h1 id="titulo">FinTechGuard</h1>
             </div>
         </nav>
     </header>
@@ -81,7 +81,7 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
                 </div>
 
                 <div class="botao_senha">
-                    <button type="submit" value="Atualizar Senha">Atualizar Senha</button>
+                    <button type="submit" value="Atualizar Senha">Atualizar Senha</button><br><br>
                     <a href="index.php">Voltar</a>
                 </div>
 

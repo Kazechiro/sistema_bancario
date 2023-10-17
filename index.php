@@ -66,8 +66,8 @@ if (isset($_POST['cpf']) && isset($_POST['senha'])) {
     <header>
         <nav>
             <div class="logo">
-                <div class="loader"></div>
-                <h1 id="titulo">Sistema Bancário PB</h1>
+                <div class="coin"></div>
+                <h1 id="titulo">FinTechGuard</h1>
             </div>
         </nav>
     </header>

@@ -13,7 +13,9 @@ $cpf_error = '';
 $cpf_cadastro = preg_replace("/[^0-9]/", "", $cpf_cadastro); // Remova qualquer caractere que não seja número
 if (strlen($cpf_cadastro) !== 11) {
     $cpf_error = "CPF inválido. O CPF deve conter exatamente 11 números.";
+    $_SESSION['msg_cadastro'] = "<p class='error'>CPF inválido. O CPF deve conter exatamente 11 números.</p>";
     header('Location:cadastro.php');
+    exit();
 }
 
 // Validação e limpeza das entradas do usuário

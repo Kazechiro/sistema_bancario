@@ -20,7 +20,7 @@ body, h1, h2, p, ul, li {
 
 header {
   background-color: transparent;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 nav {
@@ -141,7 +141,7 @@ footer {
   padding: 20px;
 }
 
-.loader:after {
+.coin:after {
   content: '$';
   display: inline-block;
   width: 48px;
@@ -196,9 +196,14 @@ footer {
   animation: zoom 25s;
 }
 
+.success{
+  color: green;
+}
+
 .error{
   color: red;
 }
+
 
 
 /* index.php */
@@ -207,10 +212,12 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
   margin: auto;
+  
 }
 
 .form_login {
@@ -310,10 +317,10 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
-  border: 2px solid #000;
   margin: auto;
 }
 
@@ -403,10 +410,10 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
-  border: 2px solid #000;
   margin: auto;
 }
 
@@ -488,11 +495,12 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  padding: 40px;
+  border: 2px solid #011640;
+  padding: 30px;
   text-align: center;
-  width: 800px;
+  width: 900px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .informacoes_conta{
@@ -542,39 +550,104 @@ footer {
   overflow: hidden; 
 }
 
-.form_depositar {
-  float: left; 
-  width: 48%; 
-  margin-right: 2%; 
-}
-
-.form_sacar {
-  float: right; 
-  width: 48%; 
-}
-
 .clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
 
+/* depositar */
+.form_depositar {
+  float: left; 
+  width: 48%; 
+  margin-right: 2%; 
+  justify-content: center;
+  padding: 10px;
+}
+
+.input_container_depositar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputDepositar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640
+}
+
+.labelDepositar {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputDepositar:focus + .labelDepositar,
+.inputDepositar:not(:placeholder-shown) + .labelDepositar {
+  top: -12px;
+  font-size: 12px;
+  color: #011640;
+}
+
+/* sacar */
+.form_sacar {
+  float: right; 
+  width: 48%;
+  justify-content: center;
+  padding: 10px; 
+}
+
+.input_container_sacar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputSacar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640
+}
+
+.labelSacar {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.inputSacar:focus + .labelSacar,
+.inputSacar:not(:placeholder-shown) + .labelSacar {
+  top: -12px;
+  font-size: 12px;
+  color: #011640;
+}
+
 
 
 /* trasferir.php */
 
-.tela_trasferir {
+.tela_transferir {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  padding: 40px;
+  border: 2px solid #011640;
+  padding: 30px;
   text-align: center;
-  width: 500px;
-  border: 2px solid #000;
+  width: 600px;
   margin: auto;
+  margin-top: 50px;
 }
 
-.form_trasferir {
+.form_transferir {
   flex-direction: column;
   align-items: center;
 }
@@ -587,7 +660,7 @@ footer {
 }
 
 .inputTransferir {
-  width: 50%;
+  width: 40%;
   padding: 10px;
   border-radius: 5px;
   background-color: #99ADBF;
@@ -603,7 +676,7 @@ footer {
   transition: 0.2s ease all;
 }
 
-.botao_trasferir button{
+.botao_transferir button{
   background-color: #025373;
   color: #F2F2F2;
   border: none;
@@ -614,14 +687,45 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.botao_trasferir button:hover {
+.botao_transferir button:hover {
   background-color: #011640;
 }
 
-.botao_trasferir a{
+
+.tela_atualizar_limite {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 20px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+}
+
+.form_atualizar_limite {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_limite {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: large;
+}
+
+.inputLimite {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.botao_atualizar_limite button{
   background-color: #025373;
-  color: #ffff;
-  text-decoration: none;
+  color: #F2F2F2;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -630,7 +734,7 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.botao_trasferir a:hover {
+.botao_atualizar_limite button:hover {
   background-color: #011640;
 }
 
@@ -639,15 +743,20 @@ footer {
 /* extrato.php */
 
 .caixa_dados_extrato {
-  background-color: #ffff;
+  background-color: #F2F2F2;
+  color: #011640;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
+  border: 2px solid #011640;
   padding: 30px;
   text-align: center;
   width: 500px;
-  margin: 0 auto;
+  margin: auto;
   margin-top: 50px;
+}
+
+.caixa_dados_extrato h2{
+  color: black;
 }
 
 .informacoes_extrato{
@@ -684,8 +793,8 @@ footer {
 
 .transacoes {
   margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -708,15 +817,20 @@ footer {
 /* perfil.php */
 
 .caixa_dados_perfil {
-  background-color: #ffff;
+  background-color: #F2F2F2;
+  color: #011640;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
+  border: 2px solid #011640;
   padding: 30px;
   text-align: center;
   width: 600px;
-  margin: 0 auto;
+  margin: auto;
   margin-top: 50px;
+}
+
+.caixa_dados_perfil h1{
+  color: black;
 }
 
 .informacoes_usuario{
@@ -737,55 +851,26 @@ footer {
 
 
 
-/* deposito.php */
+/* protect.php */
 
-.tela_depositar {
-  background-color: #ffff;
+.tela_protect {
+  background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
+  border: 2px solid #011640;
+  padding: 40px;
   text-align: center;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 100px;
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
 }
 
-.form_depositar {
-  justify-content: center;
-  padding: 10px;
+.informacoes_protect {
+  flex-direction: column;
+  align-items: center;
 }
 
-.input_container_depositar {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.inputDepositar {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #99ADBF;
-  border: 1px solid #011640
-}
-
-.labelDepositar {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  color: #011640;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
-
-.inputDepositar:focus + .labelDepositar,
-.inputDepositar:not(:placeholder-shown) + .labelDepositar {
-  top: -12px;
-  font-size: 12px;
-  color: #011640;
-}
-
-.button_depositar button{
+.botao_protect button{
   background-color: #025373;
   color: #fff;
   border: none;
@@ -797,84 +882,6 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.button_depositar button:hover {
+.botao_protect button:hover {
   background-color: #011640;
 }
-
-.button_depositar a {
-  text-decoration: none;
-  color: #fff; 
-}
-
-
-
-/* saque.php */
-
-.tela_sacar {
-  background-color: #ffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
-  text-align: center;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 100px;
-}
-
-.form_sacar {
-  justify-content: center;
-  padding: 10px;
-}
-
-.input_container_sacar {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.inputSacar {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #99ADBF;
-  border: 1px solid #011640
-}
-
-.labelSacar {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  color: #011640;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
-
-.inputSacar:focus + .labelSacar,
-.inputSacar:not(:placeholder-shown) + .labelSacar {
-  top: -12px;
-  font-size: 12px;
-  color: #011640;
-}
-
-
-.button_sacar button{
-  background-color: #025373;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: medium;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.button_sacar button:hover {
-  background-color: #011640;
-}
-
-.button_sacar a {
-  text-decoration: none;
-  color: #fff; 
-}
-
