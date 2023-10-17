@@ -42,6 +42,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_close($conexao);
     }
 }
+// Inclua o arquivo de conexão ao banco de dados
+include "conexao.php";
+
+// Obtém o limite de transferência do usuário logado
+$limiteTransferencia = isset($_SESSION['limite']) ? $_SESSION['limite'] : 500;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $valorTransferencia = isset($_POST['valor']) ? floatval($_POST['valor']) : 0;
+
+    if ($valorTransferencia > $limiteTransferencia) {
+        echo "A transferência não pode exceder R$ " . $limiteTransferencia . ".";
+    } else {
+        // Prossiga com a lógica de transferência
+
+        // Obtém os IDs do remetente e destinatário da transferência
+        $remetente_id = $_SESSION['id']; // Suponha que o ID do remetente está na variável de sessão
+        $destinatario_id = $_POST['destinatario_id']; // Suponha que o ID do destinatário foi enviado via formulário
+
+        // Atualiza o saldo do remetente (subtrai o valor da transferência)
+        $sqlRemetente = "UPDATE usuarios SET saldo = saldo - $valorTransferencia WHERE id = $remetente_id";
+
+        // Atualiza o saldo do destinatário (soma o valor da transferência)
+        $sqlDestinatario = "UPDATE usuarios SET saldo = saldo + $valorTransferencia WHERE id = $destinatario_id";
+
+        // Execute as consultas SQL para atualizar os saldos no banco de dados
+        if (mysqli_query($conexao, $sqlRemetente) && mysqli_query($conexao, $sqlDestinatario)) {
+            // Atualize a variável de sessão com o novo saldo
+            $_SESSION['saldo'] -= $valorTransferencia;
+
+            // Exiba a mensagem de sucesso
+            echo "Transferência realizada com sucesso!";
+        } else {
+            echo "Erro na transferência. Por favor, tente novamente.";
+        }
+
+        // Feche a conexão com o banco de dados
+        mysqli_close($conexao);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <ul>
                     <a href="principal.php"> <button class="butao">Início</button></a>
                     <a href="transferir.php"> <button class="butao">Transferir</button></a>
+                    <a href="transferir.php"> <button class="butao">Transferir</button></a>
                     <a href="extrato.php"> <button class="butao">Extrato</button></a>
                     <a href="perfil.php"> <button class="butao">Perfil</button></a>
                     <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
@@ -77,7 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
 
     <div class="tela_transferir">
+    <div class="tela_transferir">
         <h1>Transferência de Dinheiro</h1><br>
+        <div class="form_transferir">
+            <form action="transferir.php" method="POST">
         <div class="form_transferir">
             <form action="transferir.php" method="POST">
                 <div class="input_container_transferir">
@@ -86,10 +129,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="input_container_transferir">
                     <label for="valor">Valor a Transferir (limite de R$ <?php echo $limiteTransferencia; ?>):</label>
+                    <label for="valor">Valor a Transferir (limite de R$ <?php echo $limiteTransferencia; ?>):</label>
                     <input type="number" name="valor" step="0.01" class="inputTransferir" required><br>
                 </div>
                 <div class="botao_transferir">
                     <button type="submit">Realizar Transferência</button>
+                <div class="botao_transferir">
+                    <button type="submit">Realizar Transferência</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tela_atualizar_limite">
+        <h1>Atualizar Limite de Transferência</h1><br>
+        <div class="form_atualizar_limite">
+            <form action="atualizar_limite.php" method="POST">
+                <div class="input_container_limite">
+                    <label for="novo_limite">Novo Limite de Transferência:</label>
+                    <input type="number" name="novo_limite" step="0.01" class="inputLimite" required><br>
+                </div>
+                <div class="botao_atualizar_limite">
+                    <button type="submit">Atualizar Limite</button>
                 </div>
             </form>
         </div>
@@ -113,3 +173,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 </html>
+
