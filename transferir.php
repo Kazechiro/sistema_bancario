@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <ul>
                     <a href="principal.php"> <button class="butao">Início</button></a>
                     <a href="transferir.php"> <button class="butao">Transferir</button></a>
-                    <a href="transferir.php"> <button class="butao">Transferir</button></a>
+
                     <a href="extrato.php"> <button class="butao">Extrato</button></a>
                     <a href="perfil.php"> <button class="butao">Perfil</button></a>
                     <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
