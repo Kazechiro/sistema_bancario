@@ -95,6 +95,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+    <div class="tela_atualizar_limite">
+        <h1>Atualizar Limite de Transferência</h1><br>
+        <div class="form_atualizar_limite">
+            <form action="atualizar_limite.php" method="POST">
+                <div class="input_container_limite">
+                    <label for="novo_limite">Novo Limite de Transferência:</label>
+                    <input type="number" name="novo_limite" step="0.01" class="inputLimite" required><br>
+                </div>
+                <div class="botao_atualizar_limite">
+                    <button type="submit">Atualizar Limite</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- Adicione código HTML para exibir informações de saldo e transferências recentes aqui -->
 </body>
 
