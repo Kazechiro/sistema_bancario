@@ -26,11 +26,12 @@ Nossos recursos funcionais são projetados para tornar suas operações bancári
 - Integração com Banco de Dados: Utilizamos o MySQL para armazenar com segurança informações de usuários e transações.
 - Uso de Javascript: O Javascript é usado para aprimorar funcionalidades e verificações.
 ### Instalação
-Faça o download do arquivo zip para a maquina.
-Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, armazene o arquivo zip em: C:\xampp\htdocs\  após extrair o arquivo abra o seu navegador e digite: http://localhost/sistemabancario/index.php  
+Faça o download do arquivo zip para a maquina.                                                                                                                 
+Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, armazene o arquivo .zip em: "C:\xampp\htdocs\" .                                           
+Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistemabancario/index.php  
 ![image](https://github.com/Kazechiro/sistema_bancario/assets/103601328/96b5cdfe-e88f-4e95-bd31-f2f70da2ebac)
 
-e aproveite sua experiência no FinTechGuard!
+E aproveite sua experiência no FinTechGuard!
 
 ## Contribuição
 
@@ -47,8 +48,9 @@ Se você deseja contribuir para o projeto do Simulador de Sistema Bancário, fic
 
 - **Crie uma Branch:**
 Antes de começar a fazer alterações, crie uma branch com um nome descritivo para o que você está trabalhando. Isso ajuda a manter o código organizado e facilita a revisão.
-
+     ```
 	"git checkout -b sua-nova-funcionalidade"
+     ```
 - **Faça Suas Alterações:**
 Agora você pode fazer as alterações desejadas no código. Certifique-se de seguir as práticas recomendadas e as diretrizes do projeto.
 
