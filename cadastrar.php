@@ -13,6 +13,7 @@ $cpf_error = '';
 $cpf_cadastro = preg_replace("/[^0-9]/", "", $cpf_cadastro); // Remova qualquer caractere que não seja número
 if (strlen($cpf_cadastro) !== 11) {
     $cpf_error = "CPF inválido. O CPF deve conter exatamente 11 números.";
+    header('Location:cadastro.php');
 }
 
 // Validação e limpeza das entradas do usuário
@@ -54,74 +55,3 @@ if (empty($cpf_error)) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <div class="loader"></div>
-                <h1 id="titulo">Sistema Bancário PB</h1>
-            </div>
-        </nav>
-    </header>
-
-    <div class="tela_cadastro">
-        <h1>Cadastre sua conta</h1><br>
-        <div class="form_cadastro">
-            <form action="cadastrar.php" method="POST">
-                <?php
-                if (!empty($cpf_error)) {
-                    echo "<p class='error'>$cpf_error</p>";
-                }
-                ?>
-                <div class="input_container_cadastro">
-                    <input type="text" name="nome" class="inputCadastro" placeholder="" required>
-                    <label class="labelCadastro">
-                        Digite seu nome
-                    </label>
-                </div>
-                <div class="input_container_cadastro">
-                    <input type="number" name="cpf_cadastro" class="inputCadastro" placeholder="" required>
-                    <label class="labelCadastro">
-                        Cpf
-                    </label>
-                </div>
-                <div class="input_container_cadastro">
-                    <input type="text" name="cep" class="inputCadastro" placeholder="" required>
-                    <label class="labelCadastro">
-                        Cep
-                    </label>
-                </div>
-                <div class="input_container_cadastro">
-                    <input type="date" name="data_nascimento" class="inputCadastro" placeholder="" required>
-                    <label class="labelCadastro">
-                        Data de Nascimento
-                    </label>
-                </div>
-                <div class="input_container_cadastro">
-                    <input type="text" name="senha" class="inputCadastro" placeholder="" required>
-                    <label class="labelCadastro">
-                        Senha
-                    </label>
-                </div>
-                <div class="botao_cadastro">
-                    <button type="submit" value="Cadastrar">Cadastrar</button>
-                </div>
-                <div class="cadastro">
-                    Já tem uma conta?
-                    <a href="index.php">
-                        Logar
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
