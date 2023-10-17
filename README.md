@@ -28,6 +28,8 @@ Nossos recursos funcionais são projetados para tornar suas operações bancári
 ### Instalação
 Faça o download do arquivo zip para a maquina.
 Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, armazene o arquivo zip em: C:\xampp\htdocs\  após extrair o arquivo abra o seu navegador e digite: http://localhost/sistemabancario/index.php  
+![image](https://github.com/Kazechiro/sistema_bancario/assets/103601328/96b5cdfe-e88f-4e95-bd31-f2f70da2ebac)
+
 e aproveite sua experiência no FinTechGuard!
 
 ## Contribuição
@@ -53,8 +55,12 @@ Agora você pode fazer as alterações desejadas no código. Certifique-se de se
 - **Commit e Push:**
 Após concluir suas alterações, faça um commit das mudanças e envie para o seu repositório fork no GitHub.
 
-	``` git commit -m "Adicionei a funcionalidade X"
-        git push origin sua-nova-funcionalidade	```
+  ```
+  git commit -m "Adicionei a funcionalidade X"
+  ```
+  ```
+  git push origin sua-nova-funcionalidade
+  ```
 - **Crie um Pull Request:**
 Vá para o seu repositório fork no GitHub e clique em "New Pull Request". Isso iniciará o processo de criação de um pull request para o repositório original.
 
