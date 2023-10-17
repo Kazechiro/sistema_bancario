@@ -4,7 +4,7 @@
 $usuario = 'root';
 $senha = '';
 $database = 'sb';
-$host = 'localhost';
+$host = 'localhost:3307';
 
 $conexao = new mysqli($host, $usuario, $senha, $database);
 
