@@ -9,7 +9,8 @@ CREATE TABLE usuarios (
    cep VARCHAR(10),
    data_nascimento DATE,
    senha VARCHAR(255) NOT NULL,
-   saldo DECIMAL(10, 2) NULL
+   saldo DECIMAL(10, 2) NULL,
+   limite DECIMAL(10, 2) DEFAULT 500
 );
 
 CREATE TABLE transacoes (
