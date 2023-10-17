@@ -108,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+    <script type="text/javascript" src="js/funcoes.js"></script>
     <!-- Adicione código HTML para exibir informações de saldo e transferências recentes aqui -->
 </body>
 
