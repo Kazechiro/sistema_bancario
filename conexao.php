@@ -2,7 +2,7 @@
 
 
 $usuario = 'root';
-$senha = '';
+$senha = '0123';
 $database = 'sb';
 $host = 'localhost';
 
