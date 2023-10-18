@@ -91,5 +91,6 @@ Agradecemos antecipadamente por sua colaboração!
 
 ### Autor do Readme:
 
-| ![Kevin's Profile](https://github.com/MrKevin284.png) | Kevin Souza |
+[![Kevin Souza](https://github.com/MrKevin284.png)](https://github.com/MrKevin284) | [Kevin Souza](https://github.com/MrKevin284)
 | --- | --- |
+
