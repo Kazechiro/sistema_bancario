@@ -54,7 +54,7 @@ include('sacar.php');
     <div class="informacoes_conta">
 
       <div class="form_depositar">
-        <h2>Faça o Deposito</h2><br>
+        <h2>Faça o Depósito</h2><br>
         <form action="deposito.php" method="POST">
           <div class="input_container_depositar">
             <input type="number" name="valor_deposito" id="valor" class="inputDepositar" placeholder="" required>
@@ -97,33 +97,6 @@ include('sacar.php');
 
     </div>
   </div>
-
-  <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const transferButton = document.querySelector('button[type="submit"][value="depositar"]');
-            const updateLimitButton = document.querySelector('button[type="submit"][value="sacar"]');
-            const valorDepositado = document.querySelector('input[name="valor_deposito"]');
-            const valorSacado = document.querySelector('input[name="valor_sacado"]');
-
-            if (transferButton) {
-                transferButton.addEventListener("click", function(event) {
-                    if (valorDepositado.value.trim() === "") {
-                        event.preventDefault();
-                        alert("Por favor, preencha o campo antes de realizar o Depósito.");
-                    }
-                });
-            }
-
-            if (updateLimitButton) {
-                updateLimitButton.addEventListener("click", function(event) {
-                    if (valorSacado.value.trim() === "") {
-                        event.preventDefault();
-                        alert("Por favor, preencha o campo antes de realizar o Saque.");
-                    }
-                });
-            }
-        });
-    </script>
 
   <script type="text/javascript" src="js/funcoes.js"></script>
 </body>

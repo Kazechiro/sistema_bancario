@@ -53,6 +53,7 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
             </div>
         </nav>
     </header>
+    
     <div class="tela_esqueci_senha">
         <h1>Redefinir a Senha</h1><br>
         <div class="form_senha">
@@ -84,9 +85,8 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
                     <button type="submit" value="Atualizar Senha">Atualizar Senha</button><br><br>
                     <a href="index.php">Voltar</a>
                 </div>
-
+            </form>
         </div>
-        </form>
     </div>
 
     <script type="text/javascript" src="js/funcoes.js"></script>

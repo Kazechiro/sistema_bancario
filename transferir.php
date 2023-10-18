@@ -72,11 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="botao_nav">
                 <ul>
                     <a href="principal.php"> <button class="butao">Início</button></a>
-<<<<<<< HEAD
                     <a href="transferir.php"> <button id="butao_selecionado">Transferir</button></a>
-=======
-                    <a href="transferir.php"> <button class="butao">Transferir</button></a>
->>>>>>> c836c5c61ded0b0761caed5f6029321f74bd92d7
                     <a href="extrato.php"> <button class="butao">Extrato</button></a>
                     <a href="perfil.php"> <button class="butao">Perfil</button></a>
                     <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
@@ -98,12 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="number" name="valor" step="0.01" class="inputTransferir" required><br>
                 </div>
                 <div class="botao_transferir">
-<<<<<<< HEAD
                     <button type="submit" value="Realizar Transferência">Realizar Transferência</button>
                 </div>
-=======
-                    <button type="submit">Realizar Transferência</button>
->>>>>>> c836c5c61ded0b0761caed5f6029321f74bd92d7
             </form>
         </div>
         <?php
@@ -134,36 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
     </div>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const transferButton = document.querySelector('button[type="submit"][value="Realizar Transferência"]');
-            const updateLimitButton = document.querySelector('button[type="submit"][value="Atualizar Limite"]');
-            const valorInput = document.querySelector('input[name="valor"]');
-            const destinatarioInput = document.querySelector('input[name="destinatario_id"]');
-            const newLimitInput = document.querySelector('input[name="novo_limite"]');
-
-            if (transferButton) {
-                transferButton.addEventListener("click", function(event) {
-                    if (valorInput.value.trim() === "" || destinatarioInput.value.trim() === "") {
-                        event.preventDefault();
-                        alert("Por favor, preencha todos os campos antes de realizar a transferência.");
-                    }
-                });
-            }
-
-            if (updateLimitButton) {
-                updateLimitButton.addEventListener("click", function(event) {
-                    if (newLimitInput.value.trim() === "") {
-                        event.preventDefault();
-                        alert("Por favor, insira o novo limite antes de atualizar.");
-                    }
-                });
-            }
-        });
-    </script>
-
 
     <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
