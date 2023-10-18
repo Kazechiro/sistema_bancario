@@ -18,7 +18,7 @@ $conn = new PDO("mysql:host=$host;dbname=" . $database, $usuario, $senha);
 
 } catch(PDOException $err) {
     echo "Erro: conexão com o banco de dados não estabelecida." . $err->getMessage();
-}
+} 
 
 
 ?>
