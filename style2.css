@@ -33,7 +33,7 @@ body {
   font-size: 20px;
   color: #025373;
   letter-spacing: 2px;
-  text-shadow: 0 0 10px ##025373;
+  text-shadow: 0 0 10px #025373;
   box-shadow: 0 0 20px rgba(0, 0, 0, .15);
 }
 

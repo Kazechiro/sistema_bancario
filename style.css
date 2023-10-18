@@ -20,7 +20,7 @@ body, h1, h2, p, ul, li {
 
 header {
   background-color: transparent;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 nav {
@@ -141,7 +141,7 @@ footer {
   padding: 20px;
 }
 
-.loader:after {
+.coin:after {
   content: '$';
   display: inline-block;
   width: 48px;
@@ -196,9 +196,14 @@ footer {
   animation: zoom 25s;
 }
 
+.success{
+  color: green;
+}
+
 .error{
   color: red;
 }
+
 
 
 /* index.php */
@@ -207,10 +212,12 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
   margin: auto;
+  
 }
 
 .form_login {
@@ -250,12 +257,13 @@ footer {
 }
 
 .botao_login button{
+  font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: medium;
+  font-size: large;
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
@@ -310,10 +318,10 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
-  border: 2px solid #000;
   margin: auto;
 }
 
@@ -330,6 +338,14 @@ footer {
   position: relative;
   margin-bottom: 20px;
   width: 100%;
+}
+
+.input_container_esqueci_senha span{
+  display: flex;
+  font-size: medium;
+  padding: 5px;
+  color: black;
+  font-size: 12px;
 }
 
 .inputSenha {
@@ -351,19 +367,20 @@ footer {
 
 .inputSenha:focus + .labelSenha,
 .inputSenha:not(:placeholder-shown) + .labelSenha {
-  top: -17px;
+  top: -15px;
   font-size: 12px;
   color: #011640;
 }
 
 .botao_senha button{
+  font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: medium;
+  font-size: large;
   transition: background-color 0.3s ease;
 }
 
@@ -372,6 +389,7 @@ footer {
 }
 
 .botao_senha a{
+  font-family: unset;
   background-color: #025373;
   color: #ffff;
   text-decoration: none;
@@ -379,20 +397,12 @@ footer {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: medium;
+  font-size: large;
   transition: background-color 0.3s ease;
 }
 
 .botao_senha a:hover {
   background-color: #011640;
-}
-
-.input_container_esqueci_senha span{
-  display: flex;
-  font-size: medium;
-  padding: 5px;
-  color: black;
-  font-size: 12px;
 }
 
 
@@ -403,10 +413,10 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
   padding: 40px;
   text-align: center;
   width: 400px;
-  border: 2px solid #000;
   margin: auto;
 }
 
@@ -444,18 +454,19 @@ footer {
 
 .inputCadastro:focus + .labelCadastro,
 .inputCadastro:not(:placeholder-shown) + .labelCadastro {
-  top: -17px;
+  top: -15px;
   font-size: 12px;
   color: #011640;
 }
 
 .botao_cadastro button{
+  font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: medium;
+  font-size: large;
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
@@ -488,11 +499,12 @@ footer {
   background-color: #F2F2F2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  padding: 40px;
+  border: 2px solid #011640;
+  padding: 30px;
   text-align: center;
-  width: 800px;
+  width: 900px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .informacoes_conta{
@@ -501,24 +513,25 @@ footer {
  align-items: center;
 }
 
-.informacoes_usuario h2 {
+.informacoes_usuario_principal h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.informacoes_usuario p {
+.informacoes_usuario_principal p {
   font-size: 20px;
   margin-bottom: 10px;
   padding: 0px 10px;
 }
 
 .botao_conta button{
+  font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: medium;
+  font-size: large;
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
@@ -542,216 +555,17 @@ footer {
   overflow: hidden; 
 }
 
-.form_depositar {
-  float: left; 
-  width: 48%; 
-  margin-right: 2%; 
-}
-
-.form_sacar {
-  float: right; 
-  width: 48%; 
-}
-
 .clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
 
-
-
-/* trasferir.php */
-
-.tela_trasferir {
-  background-color: #F2F2F2;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  padding: 40px;
-  text-align: center;
-  width: 500px;
-  border: 2px solid #000;
-  margin: auto;
-}
-
-.form_trasferir {
-  flex-direction: column;
-  align-items: center;
-}
-
-.input_container_transferir {
-  position: relative;
-  margin-bottom: 20px;
-  width: 100%;
-  font-size: large;
-}
-
-.inputTransferir {
-  width: 50%;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #99ADBF;
-  border: 1px solid #011640;
-}
-
-.labelTransferir {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  color: #011640;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
-
-.botao_trasferir button{
-  background-color: #025373;
-  color: #F2F2F2;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: medium;
-  transition: background-color 0.3s ease;
-}
-
-.botao_trasferir button:hover {
-  background-color: #011640;
-}
-
-.botao_trasferir a{
-  background-color: #025373;
-  color: #ffff;
-  text-decoration: none;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: medium;
-  transition: background-color 0.3s ease;
-}
-
-.botao_trasferir a:hover {
-  background-color: #011640;
-}
-
-
-
-/* extrato.php */
-
-.caixa_dados_extrato {
-  background-color: #ffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
-  text-align: center;
-  width: 500px;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.informacoes_extrato{
- justify-content: center;
- padding: 10px;
-}
-
-.informacoes_extrato h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.informacoes_extrato p {
-  font-size: 20px;
-  margin-bottom: 10px;
-  padding: 0px 10px;
-}
-
-.botao_perfil button{
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.botao_perfil button:hover {
-  background-color: #0056b3;
-}
-
-.transacoes {
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.lista {
-  list-style-type: none;
-}
-
-.lista span {
-  font-weight: bold;
-}
-
-.center {
-  text-align: center;
-}
-
-
-
-/* perfil.php */
-
-.caixa_dados_perfil {
-  background-color: #ffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
-  text-align: center;
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.informacoes_usuario{
- justify-content: center;
- padding: 10px;
-}
-
-.informacoes_usuario h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.informacoes_usuario p {
-  font-size: 20px;
-  margin-bottom: 10px;
-  padding: 0px 10px;
-}
-
-
-
-/* deposito.php */
-
-.tela_depositar {
-  background-color: #ffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
-  text-align: center;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 100px;
-}
-
+/* depositar */
 .form_depositar {
+  float: left; 
+  width: 48%; 
+  margin-right: 2%; 
   justify-content: center;
   padding: 10px;
 }
@@ -785,46 +599,12 @@ footer {
   color: #011640;
 }
 
-.button_depositar button{
-  background-color: #025373;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: medium;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.button_depositar button:hover {
-  background-color: #011640;
-}
-
-.button_depositar a {
-  text-decoration: none;
-  color: #fff; 
-}
-
-
-
-/* saque.php */
-
-.tela_sacar {
-  background-color: #ffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 2px solid #000;
-  padding: 30px;
-  text-align: center;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 100px;
-}
-
+/* sacar */
 .form_sacar {
+  float: right; 
+  width: 48%;
   justify-content: center;
-  padding: 10px;
+  padding: 10px; 
 }
 
 .input_container_sacar {
@@ -857,24 +637,260 @@ footer {
 }
 
 
-.button_sacar button{
+
+/* trasferir.php */
+
+.tela_transferir {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 30px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.form_transferir {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_transferir {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: large;
+}
+
+.inputTransferir {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.labelTransferir {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #011640;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.botao_transferir button{
+  font-family: unset;
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+  transition: background-color 0.3s ease;
+}
+
+.botao_transferir button:hover {
+  background-color: #011640;
+}
+
+/* atualizar_limite */
+.tela_atualizar_limite {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 20px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+}
+
+.form_atualizar_limite {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_container_limite {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: large;
+}
+
+.inputLimite {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+}
+
+.botao_atualizar_limite button{
+  font-family: unset;
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+  transition: background-color 0.3s ease;
+}
+
+.botao_atualizar_limite button:hover {
+  background-color: #011640;
+}
+
+
+
+/* extrato.php */
+
+.caixa_dados_extrato {
+  background-color: #F2F2F2;
+  color: #011640;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 30px 40px;
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.caixa_dados_extrato h2, h3{
+  color: black;
+}
+
+.informacoes_extrato{
+ justify-content: center;
+ padding: 10px;
+}
+
+.informacoes_extrato h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.informacoes_extrato p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
+
+.botao_voltar_extrato button{
+  font-family: unset;
+  background-color: #025373;
+  color: #F2F2F2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+  transition: background-color 0.3s ease;
+}
+
+.botao_voltar_extrato button:hover {
+  background-color: #011640;
+}
+
+.transacoes {
+  margin-bottom: 20px;
+  background-color: #99ADBF;
+  border: 1px solid #011640;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lista {
+  list-style-type: none;
+}
+
+.lista span {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+
+
+/* perfil.php */
+
+.caixa_dados_perfil {
+  background-color: #F2F2F2;
+  color: #011640;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 30px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.caixa_dados_perfil h1{
+  color: black;
+}
+
+.informacoes_usuario_perfil{
+  justify-content: center;
+  padding: 20px;
+}
+
+.informacoes_usuario_perfil h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.informacoes_usuario_perfil p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+  color: #011640;
+}
+
+
+
+/* protect.php */
+
+.tela_protect {
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 2px solid #011640;
+  padding: 40px;
+  text-align: center;
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.informacoes_protect {
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao_protect button{
+  font-family: unset;
   background-color: #025373;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: medium;
+  font-size: large;
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
-.button_sacar button:hover {
+.botao_protect button:hover {
   background-color: #011640;
 }
-
-.button_sacar a {
-  text-decoration: none;
-  color: #fff; 
-}
-

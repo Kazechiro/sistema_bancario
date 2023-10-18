@@ -1,17 +1,27 @@
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav>
             <div class="logo">
-                <div class="loader"></div>
-                <h1 id="titulo">Sistema Bancário PB</h1>
+                <div class="coin"></div>
+                <h1 id="titulo">FinTechGuard</h1>
             </div>
         </nav>
     </header>
@@ -26,6 +36,7 @@
                     unset($_SESSION['msg_cadastro']);
                 }
                 ?>
+
                 <div class="input_container_cadastro">
                     <input type="text" name="nome" class="inputCadastro" placeholder="" required>
                     <label class="labelCadastro">
@@ -76,4 +87,5 @@
         ?>
     </script>
 </body>
+
 </html>

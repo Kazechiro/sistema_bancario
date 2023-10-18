@@ -6,45 +6,10 @@ if (!isset($_SESSION)) {
 include('protect.php');
 include('conexao.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $valor_sacado = floatval($_POST['valor_sacado']);
+include('deposito.php');
+include('sacar.php');
 
-  if ($valor_sacado <= 0) {
-    $_SESSION['msg_sacar'] = "<p class='error'>O valor do saque deve ser maior que zero.</p>";
-    header("Location: principal.php");
-    exit();
-  } else if ($valor_sacado > $_SESSION['saldo']) {
-    $_SESSION['msg_sacar'] = "<p class='error'>Saldo insuficiente para realizar o saque.</p>";
-    header("Location: principal.php");
-    exit();
-  }
-
-  $usuario_id = $_SESSION['id'];
-
-  //update no banco
-  $sql_code = "UPDATE usuarios SET saldo = saldo - $valor_sacado WHERE id = $usuario_id";
-  $resultado = $conexao->query($sql_code);
-
-
-  if (!$resultado) {
-    echo "erro ao atualizar o valor";
-  } else {
-
-    $_SESSION['saldo'] -= $valor_sacado;
-  }
-
-  //insert nas transações - para ficarem salvas todas as transações
-  $sql_code = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
-                 VALUES ('Saque', $usuario_id, $valor_sacado, NOW())";
-  $resultado = $conexao->query($sql_code);
-
-
-  $_SESSION['msg_deposito'] = "<p class='success'>Depósito de R$ $valor_sacado realizado com sucesso.</p>";
-  header("Location: principal.php");
-  exit();
-}
 ?>
-
 
 
 <!DOCTYPE html>
@@ -53,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema Bancário - Principal</title>
+  <title>Início</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -62,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <header>
     <nav>
       <div class="logo">
-        <div class="loader"></div>
-        <h1 id="titulo">Sistema Bancário PB</h1>
+        <div class="coin"></div>
+        <h1 id="titulo">FinTechGuard</h1>
       </div>
       <div class="bem_vindo_nome">
-        <h2> Bem vindo (a) <?php echo $_SESSION['nome']; ?></h2>
+        <h2> Bem vindo (a): <?php echo $_SESSION['nome']; ?></h2>
       </div>
       <div class="botao_nav">
         <ul>
@@ -87,8 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <hr>
 
     <div class="informacoes_conta">
+
       <div class="form_depositar">
-        <h2>Faça o Deposito</h2><br>
+        <h2>Faça o Depósito</h2><br>
         <form action="deposito.php" method="POST">
           <div class="input_container_depositar">
             <input type="number" name="valor_deposito" id="valor" class="inputDepositar" placeholder="" required>
@@ -97,8 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </label>
           </div>
           <div class="botao_conta">
-            <button type="submit">Depositar</button>
+            <button type="submit" value="depositar">Depositar</button>
           </div>
+          <?php
+          if (isset($_SESSION['msg_deposito'])) {
+            echo $_SESSION['msg_deposito'];
+            unset($_SESSION['msg_deposito']);
+          }
+          ?>
         </form>
       </div>
 
@@ -112,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </label>
           </div>
           <div class="botao_conta">
-            <button type="submit">Sacar</button>
+            <button type="submit" value="sacar">Sacar</button>
           </div>
           <?php
           if (isset($_SESSION['msg_sacar'])) {
@@ -122,10 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           ?>
         </form>
       </div>
+
     </div>
   </div>
-
-
 
   <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
