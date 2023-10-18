@@ -15,7 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($valorTransferencia > $limiteTransferencia) {
         echo "A transferência não pode exceder R$ " . $limiteTransferencia . ".";
-    } else {
+    } elseif($valorTransferencia > $_SESSION['saldo']) {
+        echo "A transferência não pode exceder R$ " . $_SESSION['saldo'] . ".";
+    }
+    else {
         // Prossiga com a lógica de transferência
 
         // Obtém os IDs do remetente e destinatário da transferência
