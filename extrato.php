@@ -70,8 +70,11 @@ $usuario_id = $_SESSION['id'];
         }
 
         ?>
-        <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3>
-
+        <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3><br>
+        <div class="botao_voltar_extrato">
+          <button id="scrollToTopButton">Voltar ao Topo</button>
+        </div>
+        
     </div>
   </div>
 

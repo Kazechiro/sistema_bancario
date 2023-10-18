@@ -54,8 +54,8 @@ $saldo = $_SESSION['saldo'];
 
     <div class="caixa_dados_perfil">
         <h1>Dados do Perfil</h1>
-        <hr><br>
-        <div class="informacoes_usuario">
+        <br><hr>
+        <div class="informacoes_usuario_perfil">
             <p><strong>Nome:</strong> <?php echo $nome; ?></p>
             <p><strong>CPF:</strong> <?php echo $cpf; ?></p>
             <p><strong>CEP:</strong> <?php echo $cep; ?></p>
