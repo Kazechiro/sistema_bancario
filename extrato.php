@@ -58,8 +58,10 @@ $usuario_id = $_SESSION['id'];
             $tipo = 'Depósito:'.' +';
         } else if($row_transacoes['tipo_transacao'] == 'Saque'){
             $tipo = 'Saque: '.' -';
+        } else if($row_transacoes['tipo_transacao'] == 'Transferência enviada') {
+          $tipo = 'Transferência enviada'.' -';
         } else {
-          $tipo = 'Transferência'.' -';
+          $tipo = 'Transferência recebida'.' +';
         }
 
           echo "<span>" . $tipo . $row_transacoes['valor'] . "</span>";

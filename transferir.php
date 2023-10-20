@@ -5,23 +5,26 @@ if (!isset($_SESSION)) {
 
 include "conexao.php";
 
+$remetente_id = $_SESSION['id'];
 $limiteTransferencia = isset($_SESSION['limite']) ? $_SESSION['limite'] : 500;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['destinatario_id']) && !empty($_POST['destinatario_id'])) {
-        $valorTransferencia = isset($_POST['valor']) ? floatval($_POST['valor']) : 0;
+    if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
-
+        $valorTransferencia = floatval($_POST['valor']);
+        
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
-        $sql_verificar_destinatario = "SELECT id FROM usuarios WHERE id = $destinatario_id";
-        $resultado_verificacao = mysqli_query($conexao, $sql_verificar_destinatario);
+        $sql_verificar_destinatario = "SELECT id FROM usuarios WHERE id = :destinatario_id";
+        $stmt_verificacao = $conn->prepare($sql_verificar_destinatario);
+        $stmt_verificacao->bindParam(':destinatario_id', $destinatario_id);
+        $stmt_verificacao->execute();
 
-        if (mysqli_num_rows($resultado_verificacao) == 0) {
+        if ($stmt_verificacao->rowCount() == 0) {
             $_SESSION['msg_transferencia'] = "<br><p class='error'>Destinatário não encontrado. A transferência não pode ser realizada.</p>";
             header("Location: transferir.php");
             exit();
         } elseif ($valorTransferencia > $limiteTransferencia) {
-            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder R$ $limiteTransferencia </p>";
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder R$ $limiteTransferencia.</p>";
             header("Location: transferir.php");
             exit();
         } elseif ($valorTransferencia > $_SESSION['saldo']) {
@@ -29,36 +32,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: transferir.php");
             exit();
         } else {
+            try {
+                $conn->beginTransaction();
 
-            // Obtém os IDs do remetente e destinatário da transferência
-            $remetente_id = $_SESSION['id'];
+                // Atualiza o saldo do remetente (subtrai o valor da transferência)
+                $sqlRemetente = "UPDATE usuarios SET saldo = saldo - :valorTransferencia WHERE id = :remetente_id";
+                $stmtRemetente = $conn->prepare($sqlRemetente);
+                $stmtRemetente->bindParam(':valorTransferencia', $valorTransferencia);
+                $stmtRemetente->bindParam(':remetente_id', $remetente_id);
+                $stmtRemetente->execute();
 
-            // Atualiza o saldo do remetente (subtrai o valor da transferência)
-            $sqlRemetente = "UPDATE usuarios SET saldo = saldo - $valorTransferencia WHERE id = $remetente_id";
+                // Atualiza o saldo do destinatário (soma o valor da transferência)
+                $sqlDestinatario = "UPDATE usuarios SET saldo = saldo + :valorTransferencia WHERE id = :destinatario_id";
+                $stmtDestinatario = $conn->prepare($sqlDestinatario);
+                $stmtDestinatario->bindParam(':valorTransferencia', $valorTransferencia);
+                $stmtDestinatario->bindParam(':destinatario_id', $destinatario_id);
+                $stmtDestinatario->execute();
 
-            // Atualiza o saldo do destinatário (soma o valor da transferência)
-            $sqlDestinatario = "UPDATE usuarios SET saldo = saldo + $valorTransferencia WHERE id = $destinatario_id";
+                // Registrar a transferência no extrato do remetente
+                $sql_registrar_remetente = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
+                                          VALUES ('Transferência enviada', :remetente_id, :valorTransferencia, NOW())";
+                $stmt_registrar_remetente = $conn->prepare($sql_registrar_remetente);
+                $stmt_registrar_remetente->bindParam(':remetente_id', $remetente_id);
+                $stmt_registrar_remetente->bindParam(':valorTransferencia', $valorTransferencia);
+                $stmt_registrar_remetente->execute();
 
-            // Execute as consultas SQL para atualizar os saldos no banco de dados
-            if (mysqli_query($conexao, $sqlRemetente) && mysqli_query($conexao, $sqlDestinatario)) {
-                // Atualize a variável de sessão com o novo saldo
+                // Registrar a transferência no extrato do destinatário
+                $sql_registrar_destinatario = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
+                                             VALUES ('Transferência recebida', :destinatario_id, :valorTransferencia, NOW())";
+                $stmt_registrar_destinatario = $conn->prepare($sql_registrar_destinatario);
+                $stmt_registrar_destinatario->bindParam(':destinatario_id', $destinatario_id);
+                $stmt_registrar_destinatario->bindParam(':valorTransferencia', $valorTransferencia);
+                $stmt_registrar_destinatario->execute();
+
+                // Atualize o valor antes de mandar de volta para a página de transferência
                 $_SESSION['saldo'] -= $valorTransferencia;
 
-                // Exiba a mensagem de sucesso
+                // Confirmar a transação
+                $conn->commit();
+
                 $_SESSION['msg_transferencia'] = "<br><p class='success'>Transferência realizada com sucesso!</p>";
                 header("Location: transferir.php");
                 exit();
-            } else {
-                $_SESSION['msg_transferencia'] = "<p class='error'>Erro na transferência. Por favor, tente novamente.</p>";
+            } catch (Exception $e) {
+                // Reverter a transação em caso de erro
+                $conn->rollBack();
+                $_SESSION['msg_transferencia'] = "<p class='error'>Erro ao realizar a transferência: " . $e->getMessage() . "</p>";
                 header("Location: transferir.php");
                 exit();
             }
-
-            // Feche a conexão com o banco de dados
-            mysqli_close($conexao);
         }
     } else {
-        $_SESSION['msg_transferencia'] = "<p class='error'>ID do destinatário não foi fornecido. A transferência não pode ser realizada.</p>";
+        $_SESSION['msg_transferencia'] = "<p class='error'>Por favor, preencha todos os campos.</p>";
         header("Location: transferir.php");
         exit();
     }
