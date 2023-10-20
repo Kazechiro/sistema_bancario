@@ -22,12 +22,4 @@ CREATE TABLE transacoes (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (nome, cpf, cep, data_nascimento, senha, saldo)
-VALUES 
-  ('Arnaldo Samuel', 70945678904, '58065-036', '2004-02-10', 'arnaldose', 0), 
-  ('Kaio Barbosa', 17654322105, '58065-036', '2004-02-10', 'kaiose', 0),
-  ('Vittorio', 12345678978, '58065-036', '2004-02-10', 'vitts', 0);
-
-       
-       
-select * from usuarios;
+      
