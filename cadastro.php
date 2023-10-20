@@ -3,7 +3,6 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +67,7 @@ if (!isset($_SESSION)) {
                     </label>
                 </div>
                 <div class="botao_cadastro">
-                    <button type="submit" value="Cadastrar">Cadastrar</button>
+                    <button type="submit" value="cadastrar">Cadastrar</button>
                 </div>
                 <div class="cadastro">
                     Já tem uma conta?
@@ -79,6 +78,7 @@ if (!isset($_SESSION)) {
             </form>
         </div>
     </div>
+
     <script>
         <?php
         if (isset($_GET['error']) && $_GET['error'] === 'cpf') {
@@ -86,6 +86,8 @@ if (!isset($_SESSION)) {
         }
         ?>
     </script>
+
+    <script type="text/javascript" src="js/funcoes.js"></script>
 </body>
 
 </html>
