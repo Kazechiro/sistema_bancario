@@ -60,8 +60,7 @@ $saldo = $_SESSION['saldo'];
             <p><strong>CPF:</strong> <?php echo $cpf; ?></p>
             <p><strong>CEP:</strong> <?php echo $cep; ?></p>
             <p><strong>Data de Nascimento:</strong> <?php echo $data_nascimento; ?></p>
-            <p><strong>Id:</strong> <?php echo $id; ?></p>
-            <p><strong>Seu saldo na conta é de:</strong> R$<?php echo $saldo; ?></p>
+            <p><strong>ID para transferência:</strong> <?php echo $id; ?></p>
         </div>
     </div>
     <script type="text/javascript" src="js/funcoes.js"></script>
