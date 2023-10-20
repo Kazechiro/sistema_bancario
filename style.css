@@ -251,7 +251,7 @@ footer {
 
 .inputLogin:focus + .labelLogin,
 .inputLogin:not(:placeholder-shown) + .labelLogin {
-  top: -14px;
+  top: -15px;
   font-size: 12px;
   color: #011640;
 }
@@ -594,7 +594,7 @@ footer {
 
 .inputDepositar:focus + .labelDepositar,
 .inputDepositar:not(:placeholder-shown) + .labelDepositar {
-  top: -12px;
+  top: -15px;
   font-size: 12px;
   color: #011640;
 }
@@ -631,7 +631,7 @@ footer {
 
 .inputSacar:focus + .labelSacar,
 .inputSacar:not(:placeholder-shown) + .labelSacar {
-  top: -12px;
+  top: -15px;
   font-size: 12px;
   color: #011640;
 }

@@ -3,7 +3,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// Inclua o arquivo de conexão ao banco de dados
 include "conexao.php";
 
 $limiteTransferencia = isset($_SESSION['limite']) ? $_SESSION['limite'] : 500;
@@ -18,11 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $resultado_verificacao = mysqli_query($conexao, $sql_verificar_destinatario);
 
         if (mysqli_num_rows($resultado_verificacao) == 0) {
-            echo "Destinatário não encontrado. A transferência não pode ser realizada.";
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>Destinatário não encontrado. A transferência não pode ser realizada.</p>";
+            header("Location: transferir.php");
+            exit();
         } elseif ($valorTransferencia > $limiteTransferencia) {
-            echo "A transferência não pode exceder R$ " . $limiteTransferencia . ".";
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder R$ $limiteTransferencia </p>";
+            header("Location: transferir.php");
+            exit();
         } elseif ($valorTransferencia > $_SESSION['saldo']) {
-            echo "A transferência não pode exceder R$ " . $_SESSION['saldo'] . ".";
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder R$ {$_SESSION['saldo']}</p>";
+            header("Location: transferir.php");
+            exit();
         } else {
 
             // Obtém os IDs do remetente e destinatário da transferência
@@ -40,20 +45,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['saldo'] -= $valorTransferencia;
 
                 // Exiba a mensagem de sucesso
-                echo "Transferência realizada com sucesso!";
+                $_SESSION['msg_transferencia'] = "<br><p class='success'>Transferência realizada com sucesso!</p>";
+                header("Location: transferir.php");
+                exit();
             } else {
-                echo "Erro na transferência. Por favor, tente novamente.";
+                $_SESSION['msg_transferencia'] = "<p class='error'>Erro na transferência. Por favor, tente novamente.</p>";
+                header("Location: transferir.php");
+                exit();
             }
-
-            $_SESSION['msg_saldo'] = "<br><p class='success'>Transferência realizada com sucesso!</p>";
-            header("Location: transferir.php");
-            exit();
 
             // Feche a conexão com o banco de dados
             mysqli_close($conexao);
         }
     } else {
-        echo "ID do destinatário não foi fornecido. A transferência não pode ser realizada.";
+        $_SESSION['msg_transferencia'] = "<p class='error'>ID do destinatário não foi fornecido. A transferência não pode ser realizada.</p>";
+        header("Location: transferir.php");
+        exit();
     }
 }
 ?>
@@ -108,9 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
         <?php
-        if (isset($_SESSION['msg_saldo'])) {
-            echo $_SESSION['msg_saldo'];
-            unset($_SESSION['msg_saldo']);
+        if (isset($_SESSION['msg_transferencia'])) {
+            echo $_SESSION['msg_transferencia'];
+            unset($_SESSION['msg_transferencia']);
         }
         ?>
     </div>

@@ -9,6 +9,27 @@ function mostrarOcultarSenha() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    const transferButton = document.querySelector('button[type="submit"][value="cadastrar"]');
+    const nome = document.querySelector('input[name="nome"]');
+    const cpf_cadastro = document.querySelector('input[name="cpf_cadastro"]');
+    const cep = document.querySelector('input[name="cep"]');
+    const data_nascimento = document.querySelector('input[name="data_nascimento"]');
+    const senha = document.querySelector('input[name="senha"]');
+
+    if (transferButton) {
+        transferButton.addEventListener("click", function(event) {
+            if (nome.value.trim() === "" || cpf_cadastro.value.trim() === ""
+            || cep.value.trim() === "" || data_nascimento.value.trim() === ""
+            || senha.value.trim() === "") {
+                event.preventDefault();
+                alert("Por favor, preencha os campos antes de realizar o Cadastro.");
+            }
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
     const transferButton = document.querySelector('button[type="submit"][value="depositar"]');
     const updateLimitButton = document.querySelector('button[type="submit"][value="sacar"]');
     const valorDepositado = document.querySelector('input[name="valor_deposito"]');
