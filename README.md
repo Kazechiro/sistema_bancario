@@ -27,7 +27,7 @@ Nossos recursos funcionais são projetados para tornar suas operações bancári
 - Uso de Javascript: O Javascript é usado para aprimorar funcionalidades e verificações.
 ### Instalação
 Faça o download do arquivo zip para a maquina.                                                                                                                 
-Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, armazene o arquivo .zip em: "C:\xampp\htdocs\" .                                           
+Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, extraia o arquivo .zip em: "C:\xampp\htdocs\" .                                           
 Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistemabancario/index.php  
 ![image](https://github.com/Kazechiro/sistema_bancario/assets/103601328/96b5cdfe-e88f-4e95-bd31-f2f70da2ebac)
 
