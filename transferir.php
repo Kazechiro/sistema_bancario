@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: transferir.php");
             exit();
         } elseif ($valorTransferencia > $_SESSION['saldo']) {
-            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder R$ {$_SESSION['saldo']}</p>";
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>A transferência não pode exceder seu saldo.</p>";
             header("Location: transferir.php");
             exit();
         } else {
