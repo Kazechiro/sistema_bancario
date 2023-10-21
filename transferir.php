@@ -12,12 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
         $valorTransferencia = floatval($_POST['valor']);
-
-        if ($valor_deposito <= 0) {
-            $_SESSION['msg_transferencia'] = "<br><p class='error'>O valor da transferência deve ser maior que zero.</p>";
-            header("Location: transferir.php");
-            exit();
-        }
         
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
         $sql_verificar_destinatario = "SELECT id, nome FROM usuarios WHERE id = :destinatario_id";
@@ -100,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,13 +112,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="coin"></div>
                 <h1 id="titulo">FinTechGuard</h1>
             </div>
-            <div class= "bem_vindo_nome">
+            <div class="bem_vindo_nome">
                 <h2> Conta: <?php echo $_SESSION['nome']; ?></h2>
             </div>
             <div class="botao_nav">
                 <ul>
                     <a href="principal.php"> <button class="butao">Início</button></a>
                     <a href="transferir.php"> <button id="butao_selecionado">Transferir</button></a>
+                    <a href="atualizar_limite.php"> <button class="butao">Atualizar Limite</button></a>
                     <a href="extrato.php"> <button class="butao">Extrato</button></a>
                     <a href="perfil.php"> <button class="butao">Perfil</button></a>
                     <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
@@ -153,27 +149,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['msg_transferencia'])) {
             echo $_SESSION['msg_transferencia'];
             unset($_SESSION['msg_transferencia']);
-        }
-        ?>
-    </div>
-
-    <div class="tela_atualizar_limite">
-        <h2>Atualizar Limite de Transferência</h2><br>
-        <div class="form_atualizar_limite">
-            <form action="atualizar_limite.php" method="POST">
-                <div class="input_container_limite">
-                    <label for="novo_limite">Novo Limite de Transferência:</label>
-                    <input type="number" name="novo_limite" step="0.01" class="inputLimite" required><br>
-                </div>
-                <div class="botao_atualizar_limite">
-                    <button type="submit" value="Atualizar Limite">Atualizar Limite</button>
-                </div>
-            </form>
-        </div>
-        <?php
-        if (isset($_SESSION['msg_limite'])) {
-            echo $_SESSION['msg_limite'];
-            unset($_SESSION['msg_limite']);
         }
         ?>
     </div>
