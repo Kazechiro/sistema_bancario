@@ -82,17 +82,25 @@ document.addEventListener("DOMContentLoaded", function() {
 });
     
 
-function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
+document.addEventListener("DOMContentLoaded", function() {
+    
+    var transacoes = document.querySelectorAll('.transacoes');
   
-  var scrollToTopButton = document.getElementById('scrollToTopButton');
-  if (scrollToTopButton) {
-    scrollToTopButton.addEventListener('click', scrollToTop);
-  }
+    // Verificar se há transações
+    if (transacoes.length > 4) {
+      var scrollToTopButton = document.getElementById('scrollToTopButton');
+      if (scrollToTopButton) {
+        scrollToTopButton.style.display = 'block'; // Mostrar o botão
+        scrollToTopButton.addEventListener('click', function() {
+          // Função para rolar suavemente para o topo
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    }
+});
   
 
 function confirmarSaida() {
