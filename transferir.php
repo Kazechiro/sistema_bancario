@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
         $valorTransferencia = floatval($_POST['valor']);
+
+        if ($valorTransferencia <= 0) {
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>O valor da transferência deve ser maior que zero.</p>";
+            header("Location: transferir.php");
+            exit();
+        }
         
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
         $sql_verificar_destinatario = "SELECT id FROM usuarios WHERE id = :destinatario_id";

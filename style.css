@@ -215,9 +215,8 @@ footer {
   border: 2px solid #011640;
   padding: 40px;
   text-align: center;
-  width: 400px;
+  max-width: 400px;
   margin: auto;
-  
 }
 
 .form_login {
@@ -256,7 +255,7 @@ footer {
   color: #011640;
 }
 
-.botao_login button{
+.botao_login button {
   font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
@@ -302,12 +301,55 @@ footer {
   text-decoration: underline;
 }
 
-.input_container_login span{
+.input_container_login span {
   display: flex;
   font-size: medium;
   padding: 5px;
   color: black;
   font-size: 13px;
+}
+
+/* Ajuste o tamanho da tela de login para telas menores */
+@media (max-width: 768px) {
+  .tela_login {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1366px) {
+  /* Estilos para telas de 13 polegadas */
+  .tela_login {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 1440px) {
+  /* Estilos para telas de 14 polegadas */
+  .tela_login {
+    max-width: 370px;
+  }
+}
+
+@media (max-width: 1600px) {
+  /* Estilos para telas de 15 polegadas */
+  .tela_login {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 1680px) {
+  /* Estilos para telas de 16 polegadas */
+  .tela_login {
+    max-width: 390px;
+  }
+}
+
+@media (max-width: 1920px) {
+  /* Estilos para telas de 17 polegadas */
+  .tela_login {
+    max-width: 400px;
+  }
 }
 
 
@@ -321,11 +363,11 @@ footer {
   border: 2px solid #011640;
   padding: 40px;
   text-align: center;
-  width: 400px;
+  max-width: 400px;
   margin: auto;
 }
 
-.tela_esqueci_senha h1{
+.tela_esqueci_senha h1 {
   color: #011640;
 }
 
@@ -340,7 +382,7 @@ footer {
   width: 100%;
 }
 
-.input_container_esqueci_senha span{
+.input_container_esqueci_senha span {
   display: flex;
   font-size: medium;
   padding: 5px;
@@ -372,7 +414,7 @@ footer {
   color: #011640;
 }
 
-.botao_senha button{
+.botao_senha button {
   font-family: unset;
   background-color: #025373;
   color: #F2F2F2;
@@ -388,10 +430,10 @@ footer {
   background-color: #011640;
 }
 
-.botao_senha a{
+.botao_senha a {
   font-family: unset;
   background-color: #025373;
-  color: #ffff;
+  color: #FFFF;
   text-decoration: none;
   border: none;
   padding: 10px 20px;
@@ -405,6 +447,47 @@ footer {
   background-color: #011640;
 }
 
+/* Adaptação para telas menores */
+
+@media (max-width: 768px) {
+  .tela_esqueci_senha {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Adaptação para telas de notebook de 13 a 17 polegadas */
+
+@media (max-width: 1366px) {
+  .tela_esqueci_senha {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .tela_esqueci_senha {
+    max-width: 370px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .tela_esqueci_senha {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 1680px) {
+  .tela_esqueci_senha {
+    max-width: 390px;
+  }
+}
+
+@media (max-width: 1920px) {
+  .tela_esqueci_senha {
+    max-width: 400px;
+  }
+}
+
 
 
 /* cadastro.php */
@@ -416,7 +499,7 @@ footer {
   border: 2px solid #011640;
   padding: 40px;
   text-align: center;
-  width: 400px;
+  max-width: 400px;
   margin: auto;
 }
 
@@ -489,6 +572,47 @@ footer {
 
 .cadastro a:hover {
   text-decoration: underline;
+}
+
+/* Adaptação para telas menores */
+
+@media (max-width: 768px) {
+  .tela_cadastro {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Adaptação para telas de notebook de 13 a 17 polegadas */
+
+@media (max-width: 1366px) {
+  .tela_cadastro {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .tela_cadastro {
+    max-width: 370px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .tela_cadastro {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 1680px) {
+  .tela_cadastro {
+    max-width: 390px;
+  }
+}
+
+@media (max-width: 1920px) {
+  .tela_cadastro {
+    max-width: 400px;
+  }
 }
 
 
@@ -637,6 +761,53 @@ footer {
 }
 
 
+/* Responsividade para telas menores e de notebook de 13 a 17 polegadas */
+
+@media (max-width: 768px) {
+  .detalhes_conta {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .form_depositar,
+  .form_sacar {
+    width: 100%;
+    margin: 0;
+    float: none;
+  }
+}
+
+@media (max-width: 1366px) {
+  .detalhes_conta {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .detalhes_conta {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .detalhes_conta {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1680px) {
+  .detalhes_conta {
+    width: 55%;
+  }
+}
+
+@media (max-width: 1920px) {
+  .detalhes_conta {
+    width: 50%;
+  }
+}
+
+
 
 /* trasferir.php */
 
@@ -647,7 +818,7 @@ footer {
   border: 2px solid #011640;
   padding: 30px;
   text-align: center;
-  width: 600px;
+  max-width: 600px;
   margin: auto;
   margin-top: 50px;
 }
@@ -705,7 +876,7 @@ footer {
   border: 2px solid #011640;
   padding: 20px;
   text-align: center;
-  width: 600px;
+  max-width: 600px;
   margin: auto;
 }
 
@@ -745,6 +916,56 @@ footer {
   background-color: #011640;
 }
 
+/* Responsividade para telas menores e de notebook de 13 a 17 polegadas */
+
+@media (max-width: 768px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .inputTransferir,
+  .inputLimite {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1680px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 55%;
+  }
+}
+
+@media (max-width: 1920px) {
+  .tela_transferir,
+  .tela_atualizar_limite {
+    width: 50%;
+  }
+}
+
 
 
 /* extrato.php */
@@ -757,7 +978,7 @@ footer {
   border: 2px solid #011640;
   padding: 30px 40px;
   text-align: center;
-  width: 500px;
+  max-width: 500px;
   margin: auto;
   margin-top: 50px;
 }
@@ -819,6 +1040,43 @@ footer {
   text-align: center;
 }
 
+/* Responsividade para telas menores e de notebook de 13 a 17 polegadas */
+
+@media (max-width: 768px) {
+  .caixa_dados_extrato {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .caixa_dados_extrato {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .caixa_dados_extrato {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .caixa_dados_extrato {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1680px) {
+  .caixa_dados_extrato {
+    width: 55%;
+  }
+}
+
+@media (max-width: 1920px) {
+  .caixa_dados_extrato {
+    width: 50%;
+  }
+}
 
 
 /* perfil.php */
@@ -831,7 +1089,7 @@ footer {
   border: 2px solid #011640;
   padding: 30px;
   text-align: center;
-  width: 600px;
+  max-width: 600px;
   margin: auto;
   margin-top: 50px;
 }
@@ -855,6 +1113,44 @@ footer {
   margin-bottom: 10px;
   padding: 0px 10px;
   color: #011640;
+}
+
+/* Responsividade para telas menores e de notebook de 13 a 17 polegadas */
+
+@media (max-width: 768px) {
+  .caixa_dados_perfil {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .caixa_dados_perfil {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .caixa_dados_perfil {
+    max-width: 65%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .caixa_dados_perfil {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 1680px) {
+  .caixa_dados_perfil {
+    max-width: 55%;
+  }
+}
+
+@media (max-width: 1920px) {
+  .caixa_dados_perfil {
+    max-width: 50%;
+  }
 }
 
 
