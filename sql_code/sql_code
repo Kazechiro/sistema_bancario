@@ -17,9 +17,11 @@ CREATE TABLE transacoes (
     id_transacoes INT AUTO_INCREMENT PRIMARY KEY,
     tipo_transacao VARCHAR(22) NOT NULL, 
     usuario_id INT NOT NULL,
+    usuario_destinatario INT, 
     valor DECIMAL(10, 2) NOT NULL,
     data_hora DATETIME NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (usuario_destinatario) REFERENCES usuarios(id)
 );
 
       

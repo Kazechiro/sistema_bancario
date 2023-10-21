@@ -1,5 +1,4 @@
 <?php
-
 include('conexao.php');
 include('protect.php');
 
@@ -18,7 +17,7 @@ $usuario_id = $_SESSION['id'];
 </head>
 
 <body>
-<header>
+  <header>
     <nav>
       <div class="logo">
         <div class="coin"></div>
@@ -42,41 +41,43 @@ $usuario_id = $_SESSION['id'];
   <div class="caixa_dados_extrato">
     <h2>Extrato de <?php echo $_SESSION['nome'] ?></h2><br>
     <div class="informacoes_extrato">
-      
-        <?php
-        $sql_transacoes = "SELECT * FROM transacoes WHERE usuario_id = :usuario_id";
-        $stmt_transacoes = $conn->prepare($sql_transacoes);
-        $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
-        $stmt_transacoes->execute();
+      <?php
+      $sql_transacoes = "
+        SELECT t.*, u.nome as nome_destinatario
+        FROM transacoes t
+        LEFT JOIN usuarios u ON t.usuario_destinatario = u.id
+        WHERE t.usuario_id = :usuario_id OR t.usuario_destinatario = :usuario_id
+      ";
+      $stmt_transacoes = $conn->prepare($sql_transacoes);
+      $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
+      $stmt_transacoes->execute();
 
-        while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
-          echo "<div class='transacoes'>";
-          echo "<li class='lista'>";
+      while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
+        echo "<div class='transacoes'>";
+        echo "<li class='lista'>";
+        $tipo = '';
 
-
-          if ($row_transacoes['tipo_transacao'] == 'Depósito') {
-            $tipo = 'Depósito:'.' +';
-        } else if($row_transacoes['tipo_transacao'] == 'Saque'){
-            $tipo = 'Saque: '.' -';
-        } else if($row_transacoes['tipo_transacao'] == 'Transferência enviada') {
-          $tipo = 'Transferência enviada'.' -';
+        if ($row_transacoes['tipo_transacao'] == 'Depósito') {
+          $tipo = 'Depósito: +';
+        } elseif ($row_transacoes['tipo_transacao'] == 'Saque') {
+          $tipo = 'Saque: -';
+        } elseif ($row_transacoes['tipo_transacao'] == 'Transferência enviada') {
+          $tipo = 'Transferência para ' . $row_transacoes['nome_destinatario'] . ': -';
         } else {
-          $tipo = 'Transferência recebida'.' +';
+          $tipo = 'Transferência de ' . $row_transacoes['nome_destinatario'] . ': +';
         }
 
-          echo "<span>" . $tipo . $row_transacoes['valor'] . "</span>";
-          echo "<br>";
-          echo "<span>Data: " . $row_transacoes['data_hora'] . "</span>";
-          echo "</li>";
-          echo "</div>";
-        }
-
-        ?>
-        <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3><br>
-        <div class="botao_voltar_extrato">
-          <button id="scrollToTopButton">Voltar ao Topo</button>
-        </div>
-        
+        echo "<span>" . $tipo . $row_transacoes['valor'] . "</span>";
+        echo "<br>";
+        echo "<span>Data: " . $row_transacoes['data_hora'] . "</span>";
+        echo "</li>";
+        echo "</div>";
+      }
+      ?>
+      <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3><br>
+      <div class="botao_voltar_extrato">
+        <button id="scrollToTopButton">Voltar ao Topo</button>
+      </div>
     </div>
   </div>
 

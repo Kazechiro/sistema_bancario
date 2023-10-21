@@ -12,18 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
         $valorTransferencia = floatval($_POST['valor']);
-
-        if ($valorTransferencia <= 0) {
-            $_SESSION['msg_transferencia'] = "<br><p class='error'>O valor da transferência deve ser maior que zero.</p>";
-            header("Location: transferir.php");
-            exit();
-        }
         
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
-        $sql_verificar_destinatario = "SELECT id FROM usuarios WHERE id = :destinatario_id";
+        $sql_verificar_destinatario = "SELECT id, nome FROM usuarios WHERE id = :destinatario_id";
         $stmt_verificacao = $conn->prepare($sql_verificar_destinatario);
         $stmt_verificacao->bindParam(':destinatario_id', $destinatario_id);
         $stmt_verificacao->execute();
+
+        $destinatario = $stmt_verificacao->fetch(PDO::FETCH_ASSOC);
 
         if ($stmt_verificacao->rowCount() == 0) {
             $_SESSION['msg_transferencia'] = "<br><p class='error'>Destinatário não encontrado. A transferência não pode ser realizada.</p>";
@@ -56,18 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmtDestinatario->execute();
 
                 // Registrar a transferência no extrato do remetente
-                $sql_registrar_remetente = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
-                                          VALUES ('Transferência enviada', :remetente_id, :valorTransferencia, NOW())";
+                $sql_registrar_remetente = "INSERT INTO transacoes (tipo_transacao, usuario_id, usuario_destinatario, valor, data_hora)
+                                          VALUES ('Transferência enviada', :remetente_id, :destinatario_id, :valorTransferencia, NOW())";
                 $stmt_registrar_remetente = $conn->prepare($sql_registrar_remetente);
                 $stmt_registrar_remetente->bindParam(':remetente_id', $remetente_id);
+                $stmt_registrar_remetente->bindParam(':destinatario_id', $destinatario_id);
                 $stmt_registrar_remetente->bindParam(':valorTransferencia', $valorTransferencia);
                 $stmt_registrar_remetente->execute();
 
                 // Registrar a transferência no extrato do destinatário
-                $sql_registrar_destinatario = "INSERT INTO transacoes (tipo_transacao, usuario_id, valor, data_hora)
-                                             VALUES ('Transferência recebida', :destinatario_id, :valorTransferencia, NOW())";
+                $sql_registrar_destinatario = "INSERT INTO transacoes (tipo_transacao, usuario_id, usuario_destinatario, valor, data_hora)
+                                             VALUES ('Transferência recebida', :destinatario_id, :remetente_id, :valorTransferencia, NOW())";
                 $stmt_registrar_destinatario = $conn->prepare($sql_registrar_destinatario);
                 $stmt_registrar_destinatario->bindParam(':destinatario_id', $destinatario_id);
+                $stmt_registrar_destinatario->bindParam(':remetente_id', $remetente_id);
                 $stmt_registrar_destinatario->bindParam(':valorTransferencia', $valorTransferencia);
                 $stmt_registrar_destinatario->execute();
 
@@ -113,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="coin"></div>
                 <h1 id="titulo">FinTechGuard</h1>
             </div>
-            <div class="bem_vindo_nome">
+            <div class "bem_vindo_nome">
                 <h2> Conta: <?php echo $_SESSION['nome']; ?></h2>
             </div>
             <div class="botao_nav">
