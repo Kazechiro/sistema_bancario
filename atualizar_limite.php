@@ -8,6 +8,12 @@ include "conexao.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $novoLimite = isset($_POST['novo_limite']) ? floatval($_POST['novo_limite']) : 0;
 
+    if ($novoLimite <= 499) {
+        $_SESSION['msg_limite'] = "<br><p class='error'>O valor do limite deve ser maior que R$499.</p>";
+        header("Location: transferir.php");
+        exit();
+    }
+
     // Atualiza o limite do usuário logado no banco de dados
     $usuario_id = $_SESSION['id']; // Suponha que o ID do usuário logado está na variável de sessão
 
@@ -15,7 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_query($conexao, $sqlAtualizarLimite)) {
         $_SESSION['limite'] = $novoLimite; // Atualiza o limite na variável de sessão
-        echo "Limite atualizado com sucesso!";
+        $_SESSION['msg_limite'] = "<br><p class='success'>Limite atualizado com sucesso!</p>";
+        header("Location: transferir.php");
+        exit();
     } else {
         echo "Erro na atualização do limite. Por favor, tente novamente.";
     }
@@ -27,4 +35,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Feche a conexão com o banco de dados
     mysqli_close($conexao);
 }
-?>
