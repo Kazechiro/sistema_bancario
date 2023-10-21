@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
         $valorTransferencia = floatval($_POST['valor']);
+
+        if ($valor_deposito <= 0) {
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>O valor da transferência deve ser maior que zero.</p>";
+            header("Location: transferir.php");
+            exit();
+        }
         
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
         $sql_verificar_destinatario = "SELECT id, nome FROM usuarios WHERE id = :destinatario_id";
@@ -111,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="coin"></div>
                 <h1 id="titulo">FinTechGuard</h1>
             </div>
-            <div class "bem_vindo_nome">
+            <div class= "bem_vindo_nome">
                 <h2> Conta: <?php echo $_SESSION['nome']; ?></h2>
             </div>
             <div class="botao_nav">
