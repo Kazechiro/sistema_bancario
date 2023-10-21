@@ -12,7 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['destinatario_id']) && isset($_POST['valor'])) {
         $destinatario_id = $_POST['destinatario_id'];
         $valorTransferencia = floatval($_POST['valor']);
-        
+
+        if ($valor_deposito <= 0) {
+            $_SESSION['msg_transferencia'] = "<br><p class='error'>O valor da transferência deve ser maior que zero.</p>";
+            header("Location: transferir.php");
+            exit();
+        }
+
         // Verifique se o destinatário com o ID fornecido existe no banco de dados
         $sql_verificar_destinatario = "SELECT id, nome FROM usuarios WHERE id = :destinatario_id";
         $stmt_verificacao = $conn->prepare($sql_verificar_destinatario);
@@ -139,6 +145,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="input_container_transferir">
                     <label for="valor">Valor a Transferir (limite de R$ <?php echo $limiteTransferencia; ?>):</label>
                     <input type="number" name="valor" step="0.01" class="inputTransferir" required><br>
+                    <?php
+                if (isset($_SESSION['msg_limite'])) {
+                    echo $_SESSION['msg_limite'];
+                    unset($_SESSION['msg_limite']);
+                }
+                ?>
                 </div>
                 <div class="botao_transferir">
                     <button type="submit" value="Realizar Transferência">Realizar Transferência</button>

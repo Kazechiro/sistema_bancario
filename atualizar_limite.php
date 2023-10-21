@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($novoLimite <= 499) {
         $_SESSION['msg_limite'] = "<br><p class='error'>O valor do limite deve ser maior que R$499.</p>";
-        header("Location: transferir.php");
+        header("Location: atualizar_limite.php");
         exit();
     }
 
