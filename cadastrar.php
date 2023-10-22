@@ -52,8 +52,47 @@ if (empty($cpf_error)) {
         }
     } else {
         // O CPF já existe na tabela
-        $cpf_error = "CPF já existe";
+        $cpf_error = "CPF Cadastrado no Sistema";
     }
 }
 ?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="coin"></div>
+                <h1 id="titulo">FinTechGuard</h1>
+            </div>
+        </nav>
+    </header>
+    <div class="tela_cadastro">
+        <h2>.ERRO 409.</h2>
+        <span>
+        <?php echo $cpf_error; ?>
+</span>
+<br>
+       <a href="cadastro.php"> <button class="butao">Voltar</button></a>
+</div>
+
+    
+    <script type="text/javascript" src="js/funcoes.js"></script>
+</body>
+
+</html>

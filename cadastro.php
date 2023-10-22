@@ -37,22 +37,28 @@ if (!isset($_SESSION)) {
                 ?>
 
                 <div class="input_container_cadastro">
-                    <input type="text" name="nome" class="inputCadastro" placeholder="" required>
+                    <input type="text" maxlength="60" minlength="10"  name="nome" class="inputCadastro" placeholder="" required>
                     <label class="labelCadastro">
                         Digite seu nome
                     </label>
                 </div>
                 <div class="input_container_cadastro">
-                    <input type="number" name="cpf_cadastro" class="inputCadastro" placeholder="" required>
+                    <input type="number"  name="cpf_cadastro" class="inputCadastro" placeholder="" required>
                     <label class="labelCadastro">
                         Cpf
                     </label>
                 </div>
                 <div class="input_container_cadastro">
-                    <input type="text" name="cep" class="inputCadastro" placeholder="" required>
+                    <input type="text" oninput="maxLengthCheck(this)" maxlength="8" name="cep" class="inputCadastro" placeholder="" required>
                     <label class="labelCadastro">
                         Cep
                     </label>
+                    <script>
+                      function maxLengthCheck(object) {
+                           if (object.value.length > object.maxLength)
+                             object.value = object.value.slice(8, 8)
+                      }
+</script>
                 </div>
                 <div class="input_container_cadastro">
                     <input type="date" name="data_nascimento" class="inputCadastro" placeholder="" required>

@@ -76,7 +76,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="atualizar_limite.php" method="POST">
                 <div class="input_container_limite">
                     <label for="novo_limite">Novo Limite de Transferência:</label>
-                    <input type="number" name="novo_limite" step="0.01" class="inputLimite" required><br>
+                    <input type="number" oninput="maxLengthCheck(this)" maxLenght="9" name="novo_limite" step="0.01" class="inputLimite" required><br>
+                    <script>
+                      function maxLengthCheck(object) {
+                           if (object.value.length > object.maxLength)
+                             object.value = object.value.slice(0, 9)
+                      }
+</script>
                 </div>
                 <div class="botao_atualizar_limite">
                     <button type="submit" value="Atualizar Limite">Atualizar Limite</button>
