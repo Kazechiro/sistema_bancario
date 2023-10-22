@@ -75,12 +75,7 @@ if (!isset($_SESSION)) {
 
 <body>
     <header>
-        <nav>
-            <div class="logo">
-                <div class="coin"></div>
-                <h1 id="titulo">FinTechGuard</h1>
-            </div>
-        </nav>
+        
     </header>
     <div class="tela_cadastro">
         <h2>.ERRO 409.</h2>
