@@ -43,14 +43,20 @@ $usuario_id = $_SESSION['id'];
     <div class="informacoes_extrato">
       <?php
       $sql_transacoes = "
-        SELECT t.*, u.nome as nome_destinatario
-        FROM transacoes t
-        LEFT JOIN usuarios u ON t.usuario_destinatario = u.id
-        WHERE t.usuario_id = :usuario_id OR t.usuario_destinatario = :usuario_id
-      ";
-      $stmt_transacoes = $conn->prepare($sql_transacoes);
-      $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
-      $stmt_transacoes->execute();
+      SELECT t.*, u.nome as nome_destinatario
+      FROM transacoes t
+      LEFT JOIN usuarios u ON t.usuario_destinatario = u.id
+      WHERE t.usuario_id = :usuario_id AND t.tipo_transacao IN ('Depósito', 'Saque')
+      UNION
+      SELECT t.*, u.nome as nome_destinatario
+      FROM transacoes t
+      LEFT JOIN usuarios u ON t.usuario_id = u.id
+      WHERE t.usuario_destinatario = :usuario_id AND t.tipo_transacao IN ('Transferência enviada', 'Transferência recebida')
+      ORDER BY data_hora DESC
+    ";
+    $stmt_transacoes = $conn->prepare($sql_transacoes);
+    $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
+    $stmt_transacoes->execute();
 
       while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='transacoes'>";
@@ -62,9 +68,9 @@ $usuario_id = $_SESSION['id'];
         } elseif ($row_transacoes['tipo_transacao'] == 'Saque') {
           $tipo = 'Saque: -';
         } elseif ($row_transacoes['tipo_transacao'] == 'Transferência enviada') {
-          $tipo = 'Transferência para ' . $row_transacoes['nome_destinatario'] . ': -';
-        } else {
           $tipo = 'Transferência de ' . $row_transacoes['nome_destinatario'] . ': +';
+        } else {
+          $tipo = 'Transferência para ' . $row_transacoes['nome_destinatario'] . ': -';
         }
 
         echo "<span>" . $tipo . $row_transacoes['valor'] . "</span>";
