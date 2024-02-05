@@ -27,7 +27,7 @@ Nossos recursos funcionais são projetados para tornar suas operações bancári
 ### Instalação
 Faça o download do arquivo zip para a maquina.                                                                                                                 
 Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, extraia o arquivo .zip em: "C:\xampp\htdocs\" .                                           
-Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistema_bancario_2/src/login.php  
+Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistema_bancario/index.php  
 ![image](img/image_pc.png)
 
 
@@ -50,7 +50,7 @@ Se você deseja contribuir para o projeto do Simulador de Sistema Bancário, fic
    Clone a sua cópia do repositório para o seu ambiente de desenvolvimento local. Use o comando `git clone` seguido da URL do seu repositório fork.
 
    ```shell 
-   git clone https://github.com/seu-usuario/simulador-sistema_bancario_2.git
+   git clone https://github.com/seu-usuario/simulador-sistema_bancario.git
 
 - **Crie uma Branch:**
 Antes de começar a fazer alterações, crie uma branch com um nome descritivo para o que você está trabalhando. Isso ajuda a manter o código organizado e facilita a revisão.
