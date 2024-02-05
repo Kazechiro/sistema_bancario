@@ -1,11 +1,10 @@
-
 # Simulador de Sistema Bancário - FinTechGuard
 
-Versão: 1.0
+Versão: 2.0
 
 ## Descrição
 
-Bem-vindo ao Simulador de Sistema Bancário! Este projeto é uma aplicação web desenvolvida em PHP que oferece uma experiência bancária virtual intuitiva e confiável. Com ele, os clientes podem realizar ações bancárias essenciais, como criar contas, efetuar login com CPF, realizar depósitos, saques, transferências e muito mais. Utilizamos tecnologias de ponta, incluindo PHP, HTML/CSS e MySQL, para fornecer a você a sensação de um banco real, mas de forma virtual.
+Bem-vindo ao Simulador de Sistema Bancário! Este projeto é uma aplicação web desenvolvida em PHP que oferece uma experiência bancária virtual intuitiva e confiável. Com ele, os clientes podem realizar ações bancárias essenciais, como criar contas, efetuar login com CPF, realizar depósitos, saques, transferências e muito mais. Utilizamos tecnologias de ponta, incluindo PHP, HTML/CSS/SASS e MySQL, para fornecer a você a sensação de um banco real, mas de forma virtual.
 
 ## Requisitos Funcionais
 Nossos recursos funcionais são projetados para tornar suas operações bancárias online simples e eficientes. Oferecemos funcionalidades como:
@@ -28,10 +27,17 @@ Nossos recursos funcionais são projetados para tornar suas operações bancári
 ### Instalação
 Faça o download do arquivo zip para a maquina.                                                                                                                 
 Nós usamos o XAMPP, então explicando o passo a passo do XAMPP, extraia o arquivo .zip em: "C:\xampp\htdocs\" .                                           
-Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistema_bancario/index.php  
-![image](image/FinTechGuard.jpg)
+Após extrair o arquivo abra o seu navegador e digite: http://localhost/sistema_bancario_2/src/login.php  
+![image](img/image_pc.png)
 
-E aproveite sua experiência no FinTechGuard!
+
+E agora na versão mobile
+
+![image](img/image_mobile.png)
+
+
+
+Aproveite sua experiência no FinTechGuard!
 
 ## Contribuição
 
@@ -44,7 +50,7 @@ Se você deseja contribuir para o projeto do Simulador de Sistema Bancário, fic
    Clone a sua cópia do repositório para o seu ambiente de desenvolvimento local. Use o comando `git clone` seguido da URL do seu repositório fork.
 
    ```shell 
-   git clone https://github.com/seu-usuario/simulador-sistema-bancario.git
+   git clone https://github.com/seu-usuario/simulador-sistema_bancario_2.git
 
 - **Crie uma Branch:**
 Antes de começar a fazer alterações, crie uma branch com um nome descritivo para o que você está trabalhando. Isso ajuda a manter o código organizado e facilita a revisão.

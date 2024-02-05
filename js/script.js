@@ -1,3 +1,34 @@
+AOS.init();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.navbar_links a');
+    const toggleButton = document.querySelector('.toggle_button');
+    const navbarLinks = document.querySelector('.navbar_links');
+    const navLinks = document.querySelectorAll('.navbar_links a');
+
+    let isMenuOpen = false;
+
+    toggleButton.addEventListener('click', function () {
+        isMenuOpen = !isMenuOpen;
+        navbarLinks.classList.toggle('active', isMenuOpen);
+
+        if (isMenuOpen) {
+            toggleButton.innerHTML = '&#10005;';
+        } else {
+            toggleButton.innerHTML = '&#9776;';
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            navbarLinks.classList.remove('active');
+            isMenuOpen = false;
+            toggleButton.innerHTML = '&#9776;';
+        });
+    });
+});
+
+
 function mostrarOcultarSenha() {
     var senhaInput = document.getElementById("senha");
     if (senhaInput.type === "password") {
@@ -80,28 +111,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-    
+   
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    var transacoes = document.querySelectorAll('.transacoes');
-  
-    // Verificar se há transações
-    if (transacoes.length > 4) {
-      var scrollToTopButton = document.getElementById('scrollToTopButton');
-      if (scrollToTopButton) {
-        scrollToTopButton.style.display = 'block'; // Mostrar o botão
-        scrollToTopButton.addEventListener('click', function() {
-          // Função para rolar suavemente para o topo
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
-    }
-});
-  
+function scrollToTop() {
+    document.querySelector('.todos_os_extratos').scrollIntoView({ behavior: 'smooth' });
+}
+
 
 function confirmarSaida() {
     var confirmacao = confirm("Deseja realmente sair do sistema?");

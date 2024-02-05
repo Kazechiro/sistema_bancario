@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultado = $conexao->query($sql_code);
 
     
-    $_SESSION['msg_deposito'] = "<br><p class='success'>Depósito de R$ $valor_deposito realizado com sucesso.</p>";
+    $_SESSION['msg_deposito'] = "<p class='success'>Depósito de R$ $valor_deposito realizado com sucesso.</p>";
     header("Location: principal.php");
     exit();
 }

@@ -13,34 +13,50 @@ $usuario_id = $_SESSION['id'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Extrato</title>
+
+  <!-- Biblioteca fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Biblioteca icones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Animações -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
   <header>
-    <nav>
-      <div class="logo">
+    <nav class="navbar">
+      <div class="navbar_logo">
         <div class="coin"></div>
-        <h1 id="titulo">FinTechGuard</h1>
+        <h1>FinTechGuard</h1>
       </div>
-      <div class="bem_vindo_nome">
-        <h2>Conta: <?php echo $_SESSION['nome']; ?></h2>
+
+      <div class="navbar_links">
+        <a href="principal.php" class="nav-link" onclick="changeColor(this)"><button>Início</button></a>
+        <a href="transferir.php" class="nav-link" onclick="changeColor(this)"><button>Transferir</button></a>
+        <a href="extrato.php" class="nav-link" onclick="changeColor(this)"><button id="butao_selecionado">Extrato</button></a>
+        <a href="perfil.php" class="nav-link" onclick="changeColor(this)"><button>Perfil</button></a>
+        <a href="javascript:void(0);" onclick="confirmarSaida();"><button>Sair</button></a>
       </div>
-      <div class="botao_nav">
-        <ul>
-          <a href="principal.php"> <button class="butao">Início</button></a>
-          <a href="transferir.php"> <button class="butao">Transferir</button></a>
-          <a href="extrato.php"> <button id="butao_selecionado">Extrato</button></a>
-          <a href="perfil.php"> <button class="butao">Perfil</button></a>
-          <a href="javascript:void(0);" onclick="confirmarSaida();"> <button class="butao">Sair</button></a>
-        </ul>
+
+      <div class="navbar_toggle">
+        <button class="toggle_button">&#9776;</button>
       </div>
     </nav>
   </header>
 
-  <div class="caixa_dados_extrato">
+  <div class="caixa_dados_extrato" data-aos="fade-up" data-aos-delay="100">
     <h2>Extrato de <?php echo $_SESSION['nome'] ?></h2><br>
     <div class="informacoes_extrato">
+      <div class="todos_os_extratos"></div>
+
       <?php
       $sql_transacoes = "
       SELECT t.*, u.nome as nome_destinatario
@@ -52,11 +68,11 @@ $usuario_id = $_SESSION['id'];
       FROM transacoes t
       LEFT JOIN usuarios u ON t.usuario_id = u.id
       WHERE t.usuario_destinatario = :usuario_id AND t.tipo_transacao IN ('Transferência enviada', 'Transferência recebida')
-      ORDER BY data_hora DESC
-    ";
-    $stmt_transacoes = $conn->prepare($sql_transacoes);
-    $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
-    $stmt_transacoes->execute();
+      ORDER BY data_hora DESC";
+
+      $stmt_transacoes = $conn->prepare($sql_transacoes);
+      $stmt_transacoes->bindParam(':usuario_id', $usuario_id);
+      $stmt_transacoes->execute();
 
       while ($row_transacoes = $stmt_transacoes->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='transacoes'>";
@@ -80,14 +96,16 @@ $usuario_id = $_SESSION['id'];
         echo "</div>";
       }
       ?>
+
       <h3>Seu saldo: R$<?php echo $_SESSION['saldo'] ?></h3><br>
       <div class="botao_voltar_extrato">
-        <button id="scrollToTopButton" style="display: none;">Voltar ao Topo</button>
+        <button onclick="scrollToTop()">Voltar ao Topo</button>
       </div>
+
     </div>
   </div>
-
-  <script type="text/javascript" src="js/funcoes.js"></script>
+  
+  <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>

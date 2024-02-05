@@ -13,7 +13,6 @@ body {
     height: 100vh;
 }
 
-
 /* loading.php */
 /* https://uiverse.io/pradipkaityuiux/mean-yak-69 */
 
@@ -93,4 +92,42 @@ body {
   100% {
     transform: rotate(405deg);
   }
+}
+
+
+
+/* protect.php */
+
+.tela_protect {
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    border: 2px solid #011640;
+    padding: 40px;
+    text-align: center;
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+  
+.informacoes_protect {
+    flex-direction: column;
+    align-items: center;
+}
+  
+.botao_protect button{
+    font-family: unset;
+    background-color: #025373;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: large;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+  
+.botao_protect button:hover {
+    background-color: #011640;
 }
