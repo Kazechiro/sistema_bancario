@@ -43,19 +43,35 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir a Senha</title>
+
+    <!-- Biblioteca fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Biblioteca icones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Animações -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="logo">
-                <div class="coin"></div>
-                <h1 id="titulo">FinTechGuard</h1>
-            </div>
-        </nav>
+        <div class="bg_home container" id="home">
+            <header>
+                <nav class="navbar">
+                    <div class="navbar_logo">
+                        <div class="coin"></div>
+                        <h1>FinTechGuard</h1>
+                    </div>
+                </nav>
+            </header>
+        </div>
     </header>
-    
+
     <div class="tela_esqueci_senha">
         <h1>Redefinir a Senha</h1><br>
         <div class="form_senha">
@@ -76,11 +92,10 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
                 </div>
 
                 <div class="input_container_esqueci_senha">
-                    <input type="password" name="nova_senha" class="inputSenha" id="senha" placeholder="" required>
+                    <input type="text" name="nova_senha" class="inputSenha" id="senha" placeholder="" required>
                     <label class="labelSenha" for="nova_senha">
                         Nova Senha:
                     </label>
-                    <span>Mostrar Senha:<input type="checkbox" onclick="mostrarOcultarSenha()"></span>
                 </div>
 
                 <div class="botao_senha">
@@ -91,7 +106,7 @@ if (isset($_POST['cpf']) && isset($_POST['nova_senha'])) {
         </div>
     </div>
 
-    <script type="text/javascript" src="js/funcoes.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>

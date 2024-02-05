@@ -14,7 +14,7 @@ include('protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="3;url=principal.php">
     <title>Carregando...</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
