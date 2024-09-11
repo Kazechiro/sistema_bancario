@@ -88,7 +88,7 @@ Agradecemos antecipadamente por sua colaboração!
 ### Autores:
 
 - [@Kaio Barbosa](https://github.com/Kazechiro)
-- [@Kevin Souza](https://github.com/MrKevin284)
+- [@Kevin Souza](https://github.com/Kevinl284)
 - [@Luís Guilherme](https://github.com/Vikair)
 - [@Vittorio Augusto](https://github.com/vittorioaugusto)
   
@@ -97,6 +97,6 @@ Agradecemos antecipadamente por sua colaboração!
 
 ### Autor do Readme:
 
-[![Kevin Souza](https://github.com/MrKevin284.png)](https://github.com/MrKevin284) | [Kevin Souza](https://github.com/MrKevin284)
+[![Kevin Souza](https://github.com/Kevinl284.png)](https://github.com/Kevinl284) | [Kevin Souza](https://github.com/Kevinl284)
 | --- | --- |
 
